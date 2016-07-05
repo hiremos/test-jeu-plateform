@@ -22,4 +22,17 @@ public class ShotsParameters : MonoBehaviour
         // 2 - Destruction programmée
         Destroy(gameObject, 10); // 20sec
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag != "Player")
+        {
+            EnemyHealth hitable = other.GetComponent<EnemyHealth>();
+            if (hitable != null)
+            {
+                hitable.takeDamage(gameObject.GetComponent<Collider2D>());
+            }
+            Destroy(gameObject);
+        }
+    }
 }

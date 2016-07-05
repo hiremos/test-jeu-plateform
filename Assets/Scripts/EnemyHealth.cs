@@ -3,19 +3,26 @@
 /// <summary>
 /// Gestion des points de vie et des dégâts
 /// </summary>
-public class HealthScript : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     /// <summary>
     /// Points de vies
     /// </summary>
-    public int hp = 5;
+    private float actualPv;
+    public float totalPv;
 
     /// <summary>
     /// Ennemi ou joueur ?
     /// </summary>
     public bool isEnemy = true;
+    
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void Start()
+    {
+        actualPv = totalPv;
+    }
+
+    public void takeDamage(Collider2D collider)
     {
         // Est-ce un tir ?
         ShotsParameters shot = collider.gameObject.GetComponent<ShotsParameters>();
@@ -24,19 +31,15 @@ public class HealthScript : MonoBehaviour
             // Tir allié
             if (shot.isEnemyShot != isEnemy)
             {
-                hp -= shot.damage;
+                actualPv -= shot.damage;
 
-                // Destruction du projectile
-                // On détruit toujours le gameObject associé
-                // sinon c'est le script qui serait détruit avec ""this""
-                Destroy(shot.gameObject);
+                Debug.Log(actualPv);
 
-                if (hp <= 0)
+                if (actualPv <= 0)
                 {
-                    // Destruction !
                     Destroy(gameObject);
                 }
             }
         }
-    }
+    }    
 }

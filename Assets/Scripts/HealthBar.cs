@@ -4,86 +4,138 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour {
-
+    
     public GameObject healthBar;
-    private float pourcentageDom;
-    private float pourcentageHeal;
-    public float TotalPv;
-    public float ActualPv;
+    public float totalPv;
+    public float actualPv;
     public float damage;
     public Color colorHightHpLevel;
     public Color colorMidHpLevel;
     public Color colorLowHpLevel;
 
+    public float maxInvincibleDelay = 1f;
+
+    //--------------------------------
+    // 2 - Rechargement
+    //--------------------------------
+
+    private float invincibleStateDelay;
+    
+
     // Use this for initialization
     void Start () {
-        setColor(healthBar.GetComponent<Scrollbar>().size);
+        ActualPv = TotalPv;
+        updateBar();
+        invincibleStateDelay = 0f;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        
-	}
+        if (invincibleStateDelay > 0)
+        {
+            invincibleStateDelay -= Time.deltaTime;
+        }
 
-    public void setColor(float pourcentBarHp)
+    }
+
+    public void updateBar()
     {
 
         Image CouleurBarre = healthBar.transform.FindChild("Mask").FindChild("sprit").GetComponent<Image>();
 
-        if (pourcentBarHp >= 0.5f)
+        if (getPourcentagePv() >= 0.5f)
         {
             CouleurBarre.color = colorHightHpLevel;
-        } else if (pourcentBarHp < 0.5f && pourcentBarHp >= 0.15f)
+        } else if (getPourcentagePv() < 0.5f && getPourcentagePv() >= 0.15f)
         {
             CouleurBarre.color = colorMidHpLevel;
         } else {
             CouleurBarre.color = colorLowHpLevel;
         }
 
+        healthBar.GetComponent<Scrollbar>().size = getPourcentagePv();
+
+        healthBar.transform.FindChild("Text").GetComponent<Text>().text = ActualPv+"/"+TotalPv;
+
     }
 
     public void setDamages(float damage)
     {
-        pourcentageDom = damage / TotalPv;
-        //Debug.Log("total hp :"+ TotalPv);
-        healthBar.GetComponent<Scrollbar>().size -= pourcentageDom;
-
-        setColor(healthBar.GetComponent<Scrollbar>().size);
-
-        if (healthBar.GetComponent<Scrollbar>().size <= 0)
+        if (!isNoob)
         {
-            SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex);
+            invincibleStateDelay = maxInvincibleDelay;
+
+            ActualPv -= damage;
+
+            updateBar();
+
+            if (healthBar.GetComponent<Scrollbar>().size <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex);
+            }
         }
     }
 
-    public float getPv()
+   
+
+    public float getPourcentagePv()
     {
-        return TotalPv;
+        return (ActualPv / TotalPv);
     }
 
     public void setHeal(float pvHeal)
     {
-        pourcentageHeal = pvHeal / TotalPv;
-        //Debug.Log("total hp :" + TotalPv);
-        float lifeBar = healthBar.GetComponent<Scrollbar>().size;
-        float result = lifeBar + pourcentageHeal;
 
-        if (result > 1)
+        ActualPv += pvHeal;
+
+        if(ActualPv > TotalPv)
         {
-            healthBar.GetComponent<Scrollbar>().size = 1;
-        } else {
-            healthBar.GetComponent<Scrollbar>().size = result;
+            ActualPv = TotalPv;
         }
 
-        setColor(healthBar.GetComponent<Scrollbar>().size);
+        updateBar();
 
     }
 
     public void upgradeTotalHp()
     {
         TotalPv += 3;
-        Debug.Log(TotalPv);
+        ActualPv = TotalPv;
         healthBar.GetComponent<Scrollbar>().size = 1;
-        setColor(healthBar.GetComponent<Scrollbar>().size);
+        updateBar();
+    }
+
+    public bool isNoob
+    {
+        get
+        {
+            return !(invincibleStateDelay <= 0f);
+        }
+    }
+
+    public float TotalPv
+    {
+        get
+        {
+            return totalPv;
+        }
+
+        set
+        {
+            totalPv = value;
+        }
+    }
+
+    public float ActualPv
+    {
+        get
+        {
+            return actualPv;
+        }
+
+        set
+        {
+            actualPv = value;
+        }
     }
 }

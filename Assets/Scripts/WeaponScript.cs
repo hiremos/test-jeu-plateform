@@ -51,7 +51,6 @@ namespace UnityStandardAssets._2D
         {
             if (CanAttack)
             {
-                bool up = Input.GetKey(KeyCode.UpArrow);
                 shootCooldown = shootingRate;
 
                 // Création d'un objet copie du prefab

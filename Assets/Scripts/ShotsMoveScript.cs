@@ -20,10 +20,33 @@ namespace UnityStandardAssets._2D
 
         private void Start()
         {
+            float rotation = 0f;
+            if(direction.y == 0)
+            {
+                rotation = 0f;
+            }
+            else if(direction.y != 0 && Math.Abs(direction.x) == 0)
+            {
+                rotation = direction.y*90f;
+            }
+            else if (direction.y != 0 && Math.Abs(direction.x) == 1)
+            {
+                rotation = direction.y * 45f;
+            }
+
+            if(direction.x<0)
+            {
+                rotation = -rotation;
+            }
+            
+
+            GetComponent<Rigidbody2D>().GetComponent<Transform>().Rotate(new Vector3(0, 0, rotation));
+            
             if (direction.x < 0)
             {
                 GetComponent<Rigidbody2D>().GetComponent<SpriteRenderer>().flipX = true;
-            }            
+            }
+           
         }
 
 

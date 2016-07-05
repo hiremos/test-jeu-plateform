@@ -22,7 +22,7 @@ namespace UnityStandardAssets._2D
 
             joueur = GameObject.FindGameObjectWithTag("Player");
 
-            bool m_FacingRight = joueur.GetComponent<PlatformerCharacter2D>().getM_FacingRight();
+            bool m_FacingRight = joueur.GetComponent<PlatformerCharacter2D>().isFacingRight();
             // 5 - Tir
             float shootx = 0;
             float shooty = 0;

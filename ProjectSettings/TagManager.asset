@@ -9,6 +9,7 @@ TagManager:
   - gravitynope
   - PlayerHealthBar
   - smallHeart
+  - Ennemy
   layers:
   - Default
   - TransparentFX

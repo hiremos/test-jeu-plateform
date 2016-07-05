@@ -111,9 +111,27 @@ namespace UnityStandardAssets._2D
             transform.localScale = theScale;
         }
 
-        public bool getM_FacingRight()
+        public bool isFacingRight()
         {
             return m_FacingRight;
+        }
+
+        public bool isGrounded()
+        {
+            return m_Grounded;
+        }
+
+        public void jump(float jumpForce)
+        {
+            m_Grounded = false;
+            m_Anim.SetBool("Ground", false);
+            m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+        }
+        public void bump(float bumpForce)
+        {
+            m_Grounded = false;
+            m_Anim.SetBool("Ground", false);
+            m_Rigidbody2D.AddForce(new Vector2(-bumpForce, bumpForce));
         }
     }
 }

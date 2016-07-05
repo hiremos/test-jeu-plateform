@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets._2D;
 
-public class EnnemieDamage : MonoBehaviour {
+public class EnnemyDamage : MonoBehaviour {
 
     private GameObject m_Player;
     public GameObject healthBar;
@@ -20,12 +21,19 @@ public class EnnemieDamage : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-        {
 
+        //BUMPS a opti :)
+        if (other.tag == "Player" && !other.GetComponent<PlatformerCharacter2D>().isGrounded())
+        {
+            other.GetComponent<PlatformerCharacter2D>().jump(200f);
+            Destroy(gameObject);
+        }
+        else if (other.tag == "Player")
+        {
             m_Player = GameObject.FindGameObjectWithTag("Player");
             m_Player.GetComponent<HealthBar>().setDamages(damage);
-        }   
+            other.GetComponent<PlatformerCharacter2D>().bump(300f);
+        }
     }
 
 }
