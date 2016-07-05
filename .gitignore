@@ -48,5 +48,5 @@ Temporary Items
 
 *.meta
 
-\Library\metadata\*
-\Temp\*
+/Library/metadata/*
+/Temp/*
