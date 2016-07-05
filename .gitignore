@@ -1,3 +1,7 @@
+Temp\*
+Library/metadata/
+Library\metadata\
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -47,6 +51,3 @@ Temporary Items
 .apdisk
 
 *.meta
-
-/Library/metadata/*
-/Temp/*
