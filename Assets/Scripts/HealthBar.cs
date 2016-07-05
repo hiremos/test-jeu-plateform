@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class HealthBar : MonoBehaviour {
     
     public GameObject healthBar;
+    private GameObject m_player;
     public float totalPv;
     public float actualPv;
     public float damage;
@@ -27,6 +28,7 @@ public class HealthBar : MonoBehaviour {
         ActualPv = TotalPv;
         updateBar();
         invincibleStateDelay = 0f;
+        m_player = GameObject.FindGameObjectWithTag("Player");
     }
 	
 	// Update is called once per frame
@@ -67,6 +69,9 @@ public class HealthBar : MonoBehaviour {
 
             ActualPv -= damage;
 
+            m_player.transform.FindChild("Canvas").GetComponent<Text>().color = Color.red;
+            m_player.transform.FindChild("Canvas").GetComponent<Text>().text = "-"+damage;
+
             updateBar();
 
             if (healthBar.GetComponent<Scrollbar>().size <= 0)
@@ -88,7 +93,10 @@ public class HealthBar : MonoBehaviour {
 
         ActualPv += pvHeal;
 
-        if(ActualPv > TotalPv)
+        m_player.transform.FindChild("Canvas").GetComponent<Text>().color = Color.green;
+        m_player.transform.FindChild("Canvas").GetComponent<Text>().text = "+" + pvHeal;
+
+        if (ActualPv > TotalPv)
         {
             ActualPv = TotalPv;
         }
@@ -96,6 +104,8 @@ public class HealthBar : MonoBehaviour {
         updateBar();
 
     }
+
+
 
     public void upgradeTotalHp()
     {
