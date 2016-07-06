@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class upgradeHp : MonoBehaviour
+public class UpgradeHp : MonoBehaviour
 {
 
     private GameObject m_Player;
-    public GameObject healthBar;
-    public GameObject upgradeHpSprite;
 
     // Use this for initialization
     void Start()
@@ -26,8 +24,7 @@ public class upgradeHp : MonoBehaviour
         {
             m_Player = GameObject.FindGameObjectWithTag("Player");
             m_Player.GetComponent<HealthBar>().upgradeTotalHp();
-            Destroy(upgradeHpSprite);
-
+            Destroy(gameObject);
         }
     }
 }

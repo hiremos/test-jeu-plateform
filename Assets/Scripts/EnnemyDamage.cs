@@ -32,7 +32,6 @@ public class EnnemyDamage : MonoBehaviour {
         {
             m_Player = GameObject.FindGameObjectWithTag("Player");
             m_Player.GetComponent<HealthBar>().setDamages(damage);
-            other.GetComponent<PlatformerCharacter2D>().bump(300f);
         }
     }
 

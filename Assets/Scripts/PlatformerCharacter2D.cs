@@ -40,7 +40,9 @@ namespace UnityStandardAssets._2D
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].gameObject != gameObject)
+                {
                     m_Grounded = true;
+                }
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
@@ -126,12 +128,6 @@ namespace UnityStandardAssets._2D
             m_Grounded = false;
             m_Anim.SetBool("Ground", false);
             m_Rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-        }
-        public void bump(float bumpForce)
-        {
-            m_Grounded = false;
-            m_Anim.SetBool("Ground", false);
-            m_Rigidbody2D.AddForce(new Vector2(-bumpForce, bumpForce));
         }
     }
 }

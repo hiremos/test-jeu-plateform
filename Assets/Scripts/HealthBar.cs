@@ -61,7 +61,7 @@ public class HealthBar : MonoBehaviour {
 
         healthBar.GetComponent<Scrollbar>().size = getPourcentagePv();
 
-        healthBar.transform.FindChild("Text").GetComponent<Text>().text = ActualPv+"/"+TotalPv;
+        healthBar.transform.FindChild("Pv").GetComponent<Text>().text = ActualPv+"/"+TotalPv;
 
     }
 
