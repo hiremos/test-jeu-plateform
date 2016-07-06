@@ -10,6 +10,7 @@ TagManager:
   - PlayerHealthBar
   - smallHeart
   - Ennemy
+  - Interface
   layers:
   - Default
   - TransparentFX

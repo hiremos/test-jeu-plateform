@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour {
     public GameObject healthBar;
     private GameObject m_player;
     public Transform dialogue;
+    public GameObject UI;
 
     public float totalPv;
     public float actualPv;
@@ -31,6 +32,7 @@ public class HealthBar : MonoBehaviour {
         updateBar();
         invincibleStateDelay = 0f;
         m_player = GameObject.FindGameObjectWithTag("Player");
+        UI = GameObject.FindGameObjectWithTag("Interface");
     }
 	
 	// Update is called once per frame
@@ -153,6 +155,7 @@ public class HealthBar : MonoBehaviour {
     {
         // Création d'un objet copie du prefab
         var dialogueTransform = Instantiate(dialogue) as Transform;
+        dialogueTransform.transform.parent = UI.transform;
 
         if (isHeal)
         {

@@ -471,7 +471,7 @@ GameObject:
   - 114: {fileID: 299934348}
   m_Layer: 5
   m_Name: Ui
-  m_TagString: Untagged
+  m_TagString: Interface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -932,6 +932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1185080871}
   dialogue: {fileID: 22443118, guid: 08ea9e54dad62994aa7df6c77a0bc6b2, type: 2}
+  UI: {fileID: 0}
   totalPv: 15
   actualPv: 0
   damage: 0
@@ -1458,7 +1459,7 @@ GameObject:
   - 222: {fileID: 1214542074}
   - 114: {fileID: 1214542073}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Pv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
