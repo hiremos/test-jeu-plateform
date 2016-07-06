@@ -71,8 +71,7 @@ public class HealthBar : MonoBehaviour {
 
             ActualPv -= damage;
 
-            //dialogue.GetComponent<Text>().color = Color.red;
-            //dialogue.GetComponent<Text>().text = "-"+damage;
+            afficherFluctuationLife(false, damage);
 
             updateBar();
 
@@ -95,8 +94,7 @@ public class HealthBar : MonoBehaviour {
 
         ActualPv += pvHeal;
 
-        //dialogue.GetComponent<Text>().color = Color.green;
-        //dialogue.GetComponent<Text>().text = "+" + pvHeal;
+        afficherFluctuationLife(true, pvHeal);
 
         if (ActualPv > TotalPv)
         {
@@ -149,5 +147,23 @@ public class HealthBar : MonoBehaviour {
         {
             actualPv = value;
         }
+    }
+
+    public void afficherFluctuationLife(bool isHeal, float value)
+    {
+        // Création d'un objet copie du prefab
+        var dialogueTransform = Instantiate(dialogue) as Transform;
+
+        if (isHeal)
+        {
+            dialogueTransform.GetComponent<Text>().color = Color.green;
+            dialogueTransform.GetComponent<Text>().text = "+" + value;
+        } else
+        {
+            dialogueTransform.GetComponent<Text>().color = Color.red;
+            dialogueTransform.GetComponent<Text>().text = "-" + value;
+        }
+
+        
     }
 }
