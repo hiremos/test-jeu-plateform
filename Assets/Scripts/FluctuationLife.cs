@@ -24,4 +24,10 @@ public class FluctuationLife : MonoBehaviour {
             speed.x * direction.x,
             speed.y * direction.y);
     }
+
+    private void FixedUpdate()
+    {
+        // Application du mouvement
+        //dialogue.GetComponent<Text>().velocity = movement;
+    }
 }

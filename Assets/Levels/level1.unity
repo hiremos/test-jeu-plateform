@@ -935,7 +935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1185080871}
-  totalPv: 100
+  dialogue: {fileID: 1472269149}
+  totalPv: 15
   actualPv: 0
   damage: 0
   colorHightHpLevel: {r: 0.21457607, g: 0.8897059, b: 0.045793675, a: 1}
@@ -1232,7 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  damage: 5
+  damage: 14
 --- !u!114 &943201587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,6 +1247,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalPv: 5
   isEnemy: 1
+--- !u!224 &1113812523 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22472112, guid: 08ea9e54dad62994aa7df6c77a0bc6b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840277344}
 --- !u!1001 &1116163039
 Prefab:
   m_ObjectHideFlags: 0
@@ -2052,6 +2058,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!1 &1472269148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1472269149}
+  - 222: {fileID: 1472269151}
+  - 114: {fileID: 1472269150}
+  m_Layer: 0
+  m_Name: Fluctuation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1472269149
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1472269148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1113812523}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1472269150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1472269148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1472269151
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1472269148}
 --- !u!1 &1536969151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2682,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11487362, guid: 08ea9e54dad62994aa7df6c77a0bc6b2, type: 2}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 1472269149}
+    m_RemovedComponents:
+    - {fileID: 11477634, guid: 08ea9e54dad62994aa7df6c77a0bc6b2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 08ea9e54dad62994aa7df6c77a0bc6b2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2094585874

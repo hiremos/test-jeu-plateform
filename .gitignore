@@ -50,4 +50,8 @@ Temporary Items
 
 *.meta
 Library/metadata/*
+<<<<<<< HEAD
 Temp/*
+=======
+Temp/*
+>>>>>>> origin/master

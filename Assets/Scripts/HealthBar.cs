@@ -7,6 +7,8 @@ public class HealthBar : MonoBehaviour {
     
     public GameObject healthBar;
     private GameObject m_player;
+    public Transform dialogue;
+
     public float totalPv;
     public float actualPv;
     public float damage;
@@ -69,8 +71,8 @@ public class HealthBar : MonoBehaviour {
 
             ActualPv -= damage;
 
-            m_player.transform.FindChild("Canvas").GetComponent<Text>().color = Color.red;
-            m_player.transform.FindChild("Canvas").GetComponent<Text>().text = "-"+damage;
+            //dialogue.GetComponent<Text>().color = Color.red;
+            //dialogue.GetComponent<Text>().text = "-"+damage;
 
             updateBar();
 
@@ -93,8 +95,8 @@ public class HealthBar : MonoBehaviour {
 
         ActualPv += pvHeal;
 
-        m_player.transform.FindChild("Canvas").GetComponent<Text>().color = Color.green;
-        m_player.transform.FindChild("Canvas").GetComponent<Text>().text = "+" + pvHeal;
+        //dialogue.GetComponent<Text>().color = Color.green;
+        //dialogue.GetComponent<Text>().text = "+" + pvHeal;
 
         if (ActualPv > TotalPv)
         {
