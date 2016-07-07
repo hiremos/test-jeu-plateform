@@ -25,6 +25,15 @@ public class ShotsParameters : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if(isEnemyShot == true && other.tag == "Player")
+        {
+            HealthBar HealthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBar>();
+
+            HealthPlayer.setDamages(damage);
+
+            Destroy(gameObject);
+        }
+
         if (other.tag != "Player")
         {
             EnemyHealth hitable = other.GetComponent<EnemyHealth>();

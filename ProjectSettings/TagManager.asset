@@ -11,6 +11,7 @@ TagManager:
   - smallHeart
   - Ennemy
   - Interface
+  - Water
   layers:
   - Default
   - TransparentFX
