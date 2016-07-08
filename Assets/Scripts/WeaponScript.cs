@@ -47,7 +47,7 @@ namespace UnityStandardAssets._2D
         /// <summary>
         /// Création d'un projectile si possible
         /// </summary>
-        public void Attack(bool isEnemy,Vector2 dir)
+        public void Attack(bool isEnemy, Vector2 dir)
         {
             if (CanAttack)
             {
@@ -65,12 +65,42 @@ namespace UnityStandardAssets._2D
                 {
                     shot.isEnemyShot = isEnemy;
                 }
-                // On saisit la direction pour le mouvement
+                // On saisit la m_direction pour le mouvement
                 ShotsMoveScript move = shotTransform.gameObject.GetComponent<ShotsMoveScript>();
                 if (move != null)
                 {
                     //Debug.Log(dir);
-                    move.direction = dir;
+                    move.m_direction = dir;
+                }
+            }
+        }
+
+        public void Attack(bool isEnemy, Vector2 dirShot,GameObject target)
+        {
+            if (CanAttack)
+            {
+                shootCooldown = shootingRate;
+
+                // Création d'un objet copie du prefab
+                var shotTransform = Instantiate(shotPrefab) as Transform;
+
+                // Position
+                shotTransform.position = transform.position;
+
+                // Propriétés du script
+                ShotsParameters shot = shotTransform.gameObject.GetComponent<ShotsParameters>();
+                if (shot != null)
+                {
+                    shot.isEnemyShot = isEnemy;
+                }
+                // On saisit la m_direction pour le mouvement
+                ShotsMoveScript move = shotTransform.gameObject.GetComponent<ShotsMoveScript>();
+                move.m_target = target;
+                move.isTracking = true;
+                if (move != null)
+                {
+                    //Debug.Log(dir);
+                    move.m_direction = dirShot;
                 }
             }
         }

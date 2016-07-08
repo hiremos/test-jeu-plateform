@@ -28,7 +28,7 @@ namespace UnityStandardAssets._2D
         // Update is called once per frame
         private void Update()
         {
-            // only update lookahead pos if accelerating or changed direction
+            // only update lookahead pos if accelerating or changed m_direction
             float xMoveDelta = (target.position - m_LastTargetPosition).x;
 
             bool updateLookAheadTarget = Mathf.Abs(xMoveDelta) > lookAheadMoveThreshold;
