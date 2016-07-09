@@ -86,8 +86,10 @@
     <Compile Include="Assets\Scripts\ShotsMove.cs" />
     <Compile Include="Assets\Scripts\ShotsParameters.cs" />
     <Compile Include="Assets\Scripts\SoundEffectsHelper.cs" />
+    <Compile Include="Assets\Scripts\SwapColorOnHit.cs" />
     <Compile Include="Assets\Scripts\UpgradeHp.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
+    <Compile Include="Assets\Scripts\hideWithOtherElementTrigger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
