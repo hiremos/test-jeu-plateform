@@ -10,13 +10,20 @@ public class FluctuationLife : MonoBehaviour {
 
     private Vector2 movement;
 
+    private Transform m_player;
+
     // Use this for initialization
     void Start () {
-        Destroy(gameObject, 1); // 3sec
+        
+        Destroy(gameObject, 3); // 3sec
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        
+
+
         // 2 - Calcul du mouvement
 
         movement = new Vector2(

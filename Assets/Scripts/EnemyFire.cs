@@ -23,20 +23,7 @@ public class EnemyFire : MonoBehaviour {
         Weapon weapon = GetComponent<Weapon>();
         if (lockPlayer == 1)
         {
-            m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-            m_source = gameObject.GetComponent<Transform>();
-
-            Vector2 posPlayer =  new Vector2(m_player.position.x, m_player.position.y);
-            Vector2 posSource = new Vector2(m_source.position.x, m_source.position.y);
-
-            //theta *= 180 / pi // rads to degs
-
-            m_direction.x = posPlayer.x - posSource.x;
-            m_direction.y = posPlayer.y - posSource.y;
-            double angle = System.Math.Atan2(m_direction.y,m_direction.x);
-            m_direction.x = (float)System.Math.Cos(angle);
-            m_direction.y = (float)System.Math.Sin(angle);
-            weapon.Attack(true, m_direction);
+            tirVersJoueur(false, weapon);
 
         } else if(lockPlayer <= 0)
         {
@@ -52,23 +39,7 @@ public class EnemyFire : MonoBehaviour {
         }
         else if (lockPlayer == 2)
         {
-            m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-            m_source = gameObject.GetComponent<Transform>();
-
-            Vector2 posPlayer = new Vector2(m_player.position.x, m_player.position.y);
-            Vector2 posSource = new Vector2(m_source.position.x, m_source.position.y);
-
-            //theta *= 180 / pi // rads to degs
-
-            m_direction.x = posPlayer.x - posSource.x;
-            m_direction.y = posPlayer.y - posSource.y;
-            Debug.Log("BeforeAngle:" + m_direction);
-            double angle = System.Math.Atan2(m_direction.y, m_direction.x);
-            m_direction.x = (float)System.Math.Cos(angle);
-            m_direction.y = (float)System.Math.Sin(angle);
-
-            Debug.Log("First Dir:" + m_direction);
-            weapon.Attack(true, m_direction, GameObject.FindGameObjectWithTag("Player"));
+            tirVersJoueur(true, weapon);
         }
         else
         {
@@ -76,6 +47,30 @@ public class EnemyFire : MonoBehaviour {
         }
         
     }
+    
+    public void tirVersJoueur(bool lockJoueur, Weapon weapon)
+    {
+        m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        m_source = gameObject.GetComponent<Transform>();
 
+        Vector2 posPlayer = new Vector2(m_player.position.x, m_player.position.y);
+        Vector2 posSource = new Vector2(m_source.position.x, m_source.position.y);
+
+        //theta *= 180 / pi // rads to degs
+
+        m_direction.x = posPlayer.x - posSource.x;
+        m_direction.y = posPlayer.y - posSource.y;
+        Debug.Log("BeforeAngle:" + m_direction);
+        double angle = System.Math.Atan2(m_direction.y, m_direction.x);
+        m_direction.x = (float)System.Math.Cos(angle);
+        m_direction.y = (float)System.Math.Sin(angle);
+
+        Debug.Log("First Dir:" + m_direction);
+
+        if (lockJoueur)
+            weapon.Attack(true, m_direction, GameObject.FindGameObjectWithTag("Player"));
+        else
+            weapon.Attack(true, m_direction);
+    }
 
 }

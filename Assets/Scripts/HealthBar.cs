@@ -158,6 +158,11 @@ public class HealthBar : MonoBehaviour {
         var dialogueTransform = Instantiate(dialogue) as Transform;
         dialogueTransform.transform.parent = UI.transform;
 
+        
+        float x = m_player.transform.position.x;
+        float y = m_player.transform.position.y;
+        dialogueTransform.transform.position = new Vector2(x, y);
+
         if (isHeal)
         {
             dialogueTransform.GetComponent<Text>().color = Color.green;
