@@ -20,6 +20,7 @@ public class EnemyFire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         Weapon weapon = GetComponent<Weapon>();
         if (lockPlayer == 1)
         {
@@ -56,6 +57,9 @@ public class EnemyFire : MonoBehaviour {
         Vector2 posPlayer = new Vector2(m_player.position.x, m_player.position.y);
         Vector2 posSource = new Vector2(m_source.position.x, m_source.position.y);
 
+        //recupère la distance entre le joueur et l'objet
+        float distanceJoueur = Vector2.Distance(posPlayer, posSource);
+        
         //theta *= 180 / pi // rads to degs
 
         m_direction.x = posPlayer.x - posSource.x;
@@ -67,10 +71,15 @@ public class EnemyFire : MonoBehaviour {
 
         //Debug.Log("First Dir:" + m_direction);
 
-        if (lockJoueur)
-            weapon.Attack(true, m_direction, GameObject.FindGameObjectWithTag("Player"));
-        else
-            weapon.Attack(true, m_direction);
+        //Debug.Log(distanceJoueur);
+        if (distanceJoueur <= 15)
+        {
+            if (lockJoueur)
+                weapon.Attack(true, m_direction, GameObject.FindGameObjectWithTag("Player"));
+            else
+                weapon.Attack(true, m_direction);
+        }
+            
     }
 
 }
