@@ -46,7 +46,7 @@ namespace UnityStandardAssets._2D
 
             if (shootx != 0 || shooty != 0)
             {
-                WeaponScript weapon = GetComponent<WeaponScript>();
+                Weapon weapon = GetComponent<Weapon>();
                 if (weapon != null)
                 {
                     // false : le joueur n'est pas un ennemi

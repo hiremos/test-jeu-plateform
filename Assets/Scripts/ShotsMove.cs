@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets._2D
 {
     [RequireComponent(typeof(PlatformerCharacter2D))]
-    public class ShotsMoveScript : MonoBehaviour
+    public class ShotsMove : MonoBehaviour
     {
         private Vector2 m_speed = new Vector2(15, 15);
         
@@ -14,6 +14,8 @@ namespace UnityStandardAssets._2D
         public Vector2 m_direction;
 
         private Vector2 m_movement;
+
+        public float rotation = 0f;
 
         public bool isTracking = false;
 
@@ -26,7 +28,7 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            float rotation = 0f;
+            /*
             if (m_direction.y == 0)
             {
                 rotation = 0f;
@@ -39,34 +41,33 @@ namespace UnityStandardAssets._2D
             {
                 rotation = m_direction.y * 45f;
             }
-
-            if (m_direction.x == 0 && m_direction.y == -1)
+            
+            if (m_direction.x < 0 || rotation < 0)
             {
-                rotation = -rotation;
+                rotation = 360f-Math.Abs(rotation);
+            }
+            
+
+            if (GetComponent<Rigidbody2D>().GetComponent<Transform>().rotation.eulerAngles.z != rotation)
+            {
+                GetComponent<Rigidbody2D>().GetComponent<Transform>().Rotate(0, 0, rotation);
             }
 
-            if (m_direction.x == 1 && m_direction.y == -1)
-            {
-                rotation = -rotation;
-            }
-
-            if (m_direction.x == -1 && m_direction.y == 1)
-            {
-                rotation = -rotation;
-
-            }
-
-            GetComponent<Rigidbody2D>().GetComponent<Transform>().Rotate(new Vector3(0, 0, rotation));
 
             if (m_direction.x < 0)
             {
                 GetComponent<Rigidbody2D>().GetComponent<SpriteRenderer>().flipX = true;
             }
+            */
 
             if (isTracking && m_target != null)
             {
-                updateDirection();
-                Debug.Log("up");
+
+                double angle = updateDirection();
+                if (GetComponent<Rigidbody2D>().GetComponent<Transform>().rotation.eulerAngles.z != angle)
+                {
+                    GetComponent<Rigidbody2D>().GetComponent<Transform>().Rotate(0, 0, (float)angle);
+                }
             }
 
             // 2 - Calcul du mouvement
@@ -81,7 +82,7 @@ namespace UnityStandardAssets._2D
             GetComponent<Rigidbody2D>().velocity = m_movement;
         }
 
-        private void updateDirection()
+        private double updateDirection()
         {
             Transform shot = GetComponent<Rigidbody2D>().GetComponent<Transform>();
 
@@ -95,6 +96,7 @@ namespace UnityStandardAssets._2D
             double angle = System.Math.Atan2(m_direction.y, m_direction.x);
             m_direction.x = (float)System.Math.Cos(angle);
             m_direction.y = (float)System.Math.Sin(angle);
+            return angle;
         }
     }
 }

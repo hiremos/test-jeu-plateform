@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets._2D
 {
     [RequireComponent(typeof(PlatformerCharacter2D))]
-    public class WeaponScript : MonoBehaviour
+    public class Weapon : MonoBehaviour
     {
         //--------------------------------
         // 1 - Designer variables
@@ -66,7 +66,7 @@ namespace UnityStandardAssets._2D
                     shot.isEnemyShot = isEnemy;
                 }
                 // On saisit la m_direction pour le mouvement
-                ShotsMoveScript move = shotTransform.gameObject.GetComponent<ShotsMoveScript>();
+                ShotsMove move = shotTransform.gameObject.GetComponent<ShotsMove>();
                 if (move != null)
                 {
                     //Debug.Log(dir);
@@ -94,7 +94,7 @@ namespace UnityStandardAssets._2D
                     shot.isEnemyShot = isEnemy;
                 }
                 // On saisit la m_direction pour le mouvement
-                ShotsMoveScript move = shotTransform.gameObject.GetComponent<ShotsMoveScript>();
+                ShotsMove move = shotTransform.gameObject.GetComponent<ShotsMove>();
                 move.m_target = target;
                 move.isTracking = true;
                 if (move != null)
@@ -102,6 +102,7 @@ namespace UnityStandardAssets._2D
                     //Debug.Log(dir);
                     move.m_direction = dirShot;
                 }
+               
             }
         }
 

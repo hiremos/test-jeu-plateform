@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityStandardAssets._2D;
 
-public class EnemyFireScript : MonoBehaviour {
+public class EnemyFire : MonoBehaviour {
 
     public int lockPlayer = 0;
     // 0 : Direction fixe
@@ -20,7 +20,7 @@ public class EnemyFireScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        WeaponScript weapon = GetComponent<WeaponScript>();
+        Weapon weapon = GetComponent<Weapon>();
         if (lockPlayer == 1)
         {
             m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -38,11 +38,19 @@ public class EnemyFireScript : MonoBehaviour {
             m_direction.y = (float)System.Math.Sin(angle);
             weapon.Attack(true, m_direction);
 
-        } else if(lockPlayer == 0)
+        } else if(lockPlayer <= 0)
         {
-            weapon.Attack(true, new Vector2(0, -1));
+            
+            if (lockPlayer == -1)
+            {
+                weapon.Attack(true, new Vector2(0, 1));
+            }
+            else
+            {
+                weapon.Attack(true, new Vector2(0, -1));
+            }
         }
-        else
+        else if (lockPlayer == 2)
         {
             m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             m_source = gameObject.GetComponent<Transform>();
@@ -61,6 +69,10 @@ public class EnemyFireScript : MonoBehaviour {
 
             Debug.Log("First Dir:" + m_direction);
             weapon.Attack(true, m_direction, GameObject.FindGameObjectWithTag("Player"));
+        }
+        else
+        {
+
         }
         
     }
