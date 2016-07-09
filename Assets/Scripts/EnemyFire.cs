@@ -60,12 +60,12 @@ public class EnemyFire : MonoBehaviour {
 
         m_direction.x = posPlayer.x - posSource.x;
         m_direction.y = posPlayer.y - posSource.y;
-        Debug.Log("BeforeAngle:" + m_direction);
+        //Debug.Log("BeforeAngle:" + m_direction);
         double angle = System.Math.Atan2(m_direction.y, m_direction.x);
         m_direction.x = (float)System.Math.Cos(angle);
         m_direction.y = (float)System.Math.Sin(angle);
 
-        Debug.Log("First Dir:" + m_direction);
+        //Debug.Log("First Dir:" + m_direction);
 
         if (lockJoueur)
             weapon.Attack(true, m_direction, GameObject.FindGameObjectWithTag("Player"));
