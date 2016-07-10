@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using System;
 
 /// <summary>
 /// Comportement des tirs
 /// </summary>
 public class ShotsParameters : MonoBehaviour
 {
-    // 1 - Designer variables
+    public string[] transparentTags;
 
     /// <summary>
     /// Points de dégâts infligés
@@ -34,7 +35,7 @@ public class ShotsParameters : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.tag != "Player")
+        if (null==Array.Find(transparentTags, s => s.Equals(other.tag)))
         {
             EnemyHealth hitable = other.GetComponent<EnemyHealth>();
             if (hitable != null)

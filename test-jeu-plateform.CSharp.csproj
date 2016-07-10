@@ -59,6 +59,21 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="test-jeu-plateform.CSharp.Plugins.csproj">
@@ -70,26 +85,26 @@
     <Compile Include="Assets\Damage.cs" />
     <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\DestructByTrigger.cs" />
-    <Compile Include="Assets\Scripts\Destructible.cs" />
-    <Compile Include="Assets\Scripts\EnemyFire.cs" />
-    <Compile Include="Assets\Scripts\EnemyHealth.cs" />
-    <Compile Include="Assets\Scripts\EnnemyDamage.cs" />
-    <Compile Include="Assets\Scripts\FluctuationLife.cs" />
-    <Compile Include="Assets\Scripts\Healing.cs" />
-    <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\Platformer2DUserControl.cs" />
-    <Compile Include="Assets\Scripts\PlatformerCharacter2D.cs" />
-    <Compile Include="Assets\Scripts\PlayerFireInput.cs" />
-    <Compile Include="Assets\Scripts\PlayerLifeBar.cs" />
-    <Compile Include="Assets\Scripts\Restarter.cs" />
-    <Compile Include="Assets\Scripts\ShotsMove.cs" />
-    <Compile Include="Assets\Scripts\ShotsParameters.cs" />
-    <Compile Include="Assets\Scripts\SoundEffectsHelper.cs" />
-    <Compile Include="Assets\Scripts\SwapColorOnHit.cs" />
-    <Compile Include="Assets\Scripts\UpgradeHp.cs" />
-    <Compile Include="Assets\Scripts\Weapon.cs" />
-    <Compile Include="Assets\Scripts\hideWithOtherElementTrigger.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyFire.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnnemyDamage.cs" />
+    <Compile Include="Assets\Scripts\FallingPlateform.cs" />
+    <Compile Include="Assets\Scripts\Items\Healing.cs" />
+    <Compile Include="Assets\Scripts\Items\ShotsMove.cs" />
+    <Compile Include="Assets\Scripts\Items\ShotsParameters.cs" />
+    <Compile Include="Assets\Scripts\Items\UpgradeHp.cs" />
+    <Compile Include="Assets\Scripts\Level\DestructByTrigger.cs" />
+    <Compile Include="Assets\Scripts\Level\Destructible.cs" />
+    <Compile Include="Assets\Scripts\Level\Restarter.cs" />
+    <Compile Include="Assets\Scripts\Level\SoundEffectsHelper.cs" />
+    <Compile Include="Assets\Scripts\Level\SwapColorOnHit_Slave.cs" />
+    <Compile Include="Assets\Scripts\Level\SwapColorOnHit_Watcher.cs" />
+    <Compile Include="Assets\Scripts\Player\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\Player\Platformer2DUserControl.cs" />
+    <Compile Include="Assets\Scripts\Player\PlatformerCharacter2D.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerFireInput.cs" />
+    <Compile Include="Assets\Scripts\Player\Weapon.cs" />
+    <Compile Include="Assets\Scripts\UI\FluctuationLife.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

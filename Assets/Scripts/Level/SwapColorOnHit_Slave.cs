@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SwapColorOnHit : MonoBehaviour {
+public class SwapColorOnHit_Slave : MonoBehaviour {
 
-    public bool isActivate = false;
+    private bool isActivate = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log(isActivate);
+	
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -23,14 +23,18 @@ public class SwapColorOnHit : MonoBehaviour {
             {
                 gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1);
                 isActivate = false;
-            } else
+            }
+            else
             {
                 gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
                 isActivate = true;
             }
-                
-                
         }
-        
+
+    }
+
+    public bool isActivated()
+    {
+        return isActivate;
     }
 }

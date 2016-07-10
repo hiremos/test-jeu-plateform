@@ -75,6 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a7c63f12ff70b49876827b6c888b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transparentTags:
+  - Player
+  - smallHeart
+  - transparent
   damage: 1
   isEnemyShot: 0
 --- !u!114 &11466456
@@ -88,7 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f69464c49535b4a9903b1882675ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 1, y: 0}
+  m_target: {fileID: 0}
+  m_direction: {x: 0, y: 0}
+  rotation: 0
+  isTracking: 0
 --- !u!212 &21262642
 SpriteRenderer:
   m_ObjectHideFlags: 1

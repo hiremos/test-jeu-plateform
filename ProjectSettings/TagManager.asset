@@ -12,6 +12,7 @@ TagManager:
   - Ennemy
   - Interface
   - Water
+  - transparent
   layers:
   - Default
   - TransparentFX
