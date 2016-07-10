@@ -17,11 +17,13 @@ public class DestructByTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        choosenGameObject.SetActive(false);
+        if(other.tag != "Projectile")
+            choosenGameObject.SetActive(false);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        choosenGameObject.SetActive(true);
+        if (other.tag != "Projectile")
+            choosenGameObject.SetActive(true);
     }
 }

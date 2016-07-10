@@ -12,7 +12,7 @@ public class SwapColorOnHit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        //Debug.Log(isActivate);
 	}
 
     void OnTriggerEnter2D(Collider2D other)
