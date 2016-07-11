@@ -13,6 +13,7 @@ TagManager:
   - Interface
   - Water
   - transparent
+  - Teleporter
   layers:
   - Default
   - TransparentFX
