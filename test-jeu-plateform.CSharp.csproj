@@ -59,6 +59,21 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="test-jeu-plateform.CSharp.Plugins.csproj">
@@ -68,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Damage.cs" />
+    <Compile Include="Assets\Scripts\Blocs\DestructByTrigger.cs" />
+    <Compile Include="Assets\Scripts\Blocs\Destructible.cs" />
+    <Compile Include="Assets\Scripts\Blocs\MovePlateform.cs" />
+    <Compile Include="Assets\Scripts\Blocs\SwapColorOnHit_Slave.cs" />
+    <Compile Include="Assets\Scripts\Blocs\SwapColorOnHit_Watcher.cs" />
+    <Compile Include="Assets\Scripts\Blocs\Teleporter.cs" />
     <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyFire.cs" />
@@ -78,14 +99,8 @@
     <Compile Include="Assets\Scripts\Items\ShotsMove.cs" />
     <Compile Include="Assets\Scripts\Items\ShotsParameters.cs" />
     <Compile Include="Assets\Scripts\Items\UpgradeHp.cs" />
-    <Compile Include="Assets\Scripts\Level\DestructByTrigger.cs" />
-    <Compile Include="Assets\Scripts\Level\Destructible.cs" />
     <Compile Include="Assets\Scripts\Level\Restarter.cs" />
     <Compile Include="Assets\Scripts\Level\SoundEffectsHelper.cs" />
-    <Compile Include="Assets\Scripts\Level\SwapColorOnHit_Slave.cs" />
-    <Compile Include="Assets\Scripts\Level\SwapColorOnHit_Watcher.cs" />
-    <Compile Include="Assets\Scripts\Plateform\MovePlateform.cs" />
-    <Compile Include="Assets\Scripts\Plateform\Teleporter.cs" />
     <Compile Include="Assets\Scripts\Player\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Player\Platformer2DUserControl.cs" />
     <Compile Include="Assets\Scripts\Player\PlatformerCharacter2D.cs" />

@@ -43,6 +43,7 @@ namespace UnityStandardAssets._2D
                 {
                     m_Grounded = true;
                 }
+                
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
