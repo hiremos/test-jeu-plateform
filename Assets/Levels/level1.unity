@@ -584,6 +584,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 134128914}
   - 212: {fileID: 134128915}
+  - 114: {fileID: 134128916}
   m_Layer: 0
   m_Name: Centre
   m_TagString: Untagged
@@ -634,6 +635,23 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &134128916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134128913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a0b1f76d2f92545a02f987a8db88e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: {x: 1, y: 1}
+  speed: 0
+  plateform1: {fileID: 1978545839}
+  plateform2: {fileID: 2030785352}
+  goRight: 1
+  x: 0
 --- !u!1001 &203844215
 Prefab:
   m_ObjectHideFlags: 0
@@ -4342,7 +4360,8 @@ Prefab:
       propertyPath: m_TagString
       value: Moving
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11430212, guid: e627f62af84ba124f82b6833e76565de, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e627f62af84ba124f82b6833e76565de, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1333006254 stripped
@@ -4549,7 +4568,8 @@ Prefab:
       propertyPath: m_TagString
       value: Moving
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11430212, guid: e627f62af84ba124f82b6833e76565de, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e627f62af84ba124f82b6833e76565de, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1376922698 stripped
@@ -6493,6 +6513,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.07894616, y: 0.6308952}
+--- !u!1 &1978545839 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179724, guid: e627f62af84ba124f82b6833e76565de, type: 2}
+  m_PrefabInternal: {fileID: 1333006253}
 --- !u!1 &1987046477
 GameObject:
   m_ObjectHideFlags: 0
@@ -6740,6 +6764,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2030785352 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 179724, guid: e627f62af84ba124f82b6833e76565de, type: 2}
+  m_PrefabInternal: {fileID: 1376922697}
 --- !u!1 &2064462990
 GameObject:
   m_ObjectHideFlags: 0
