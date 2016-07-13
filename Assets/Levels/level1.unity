@@ -5303,9 +5303,9 @@ Transform:
   m_Children:
   - {fileID: 134128914}
   - {fileID: 1333006254}
+  - {fileID: 2113529993}
   - {fileID: 1452567127}
   - {fileID: 1376922698}
-  - {fileID: 2113529993}
   m_Father: {fileID: 0}
   m_RootOrder: 13
 --- !u!4 &1325733059
@@ -5738,7 +5738,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1319837249}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1378197347
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,7 +6119,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1319837249}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!50 &1452567128
 Rigidbody2D:
   serializedVersion: 2
@@ -8758,6 +8758,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.5451633
       objectReference: {fileID: 0}
+    - target: {fileID: 8201964, guid: acfb56fbd6d085246819047a84fc72e3, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c885564e4af6734f94f3d03a771f089, type: 3}
     m_RemovedComponents:
     - {fileID: 11418310, guid: acfb56fbd6d085246819047a84fc72e3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: acfb56fbd6d085246819047a84fc72e3, type: 2}
@@ -9034,7 +9038,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1319837249}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!50 &2113529994
 Rigidbody2D:
   serializedVersion: 2
@@ -9111,6 +9115,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2133048452}
+  - 61: {fileID: 2133048453}
+  - 114: {fileID: 2133048454}
   m_Layer: 0
   m_Name: eau
   m_TagString: Water
@@ -9149,6 +9155,34 @@ Transform:
   - {fileID: 1082414398}
   m_Father: {fileID: 826198504}
   m_RootOrder: 6
+--- !u!61 &2133048453
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2133048451}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 6.6663246, y: -9.115256}
+  serializedVersion: 2
+  m_Size: {x: 5.9001293, y: 2.9192886}
+--- !u!114 &2133048454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2133048451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fefc9400044444da3f08732f58b999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedLose: 2
+  JumpBonus: 100
+  damageDot: 10
 --- !u!1001 &2137953997
 Prefab:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class movePlateformAround : MonoBehaviour {
             time += Time.deltaTime * speed;
         }
         
-        Debug.Log(time);
+        //Debug.Log(time);
 
         float angle = (6 / plateforms.Length);
         for (int i=0;i < plateforms.Length;i++)

@@ -124,6 +124,26 @@ namespace UnityStandardAssets._2D
             return m_Grounded;
         }
 
+        public float GetMaxSpeed()
+        {
+            return m_MaxSpeed;
+        }
+
+        public float GetJumpForce()
+        {
+            return m_JumpForce;
+        }
+
+        public void SetMaxSpeed(float newMaxSpeed)
+        {
+            m_MaxSpeed = newMaxSpeed;
+        }
+
+        public void SetJumpForce(float newJumpForce)
+        {
+            m_JumpForce = newJumpForce;
+        }
+
         public void jump(float jumpForce)
         {
             m_Grounded = false;

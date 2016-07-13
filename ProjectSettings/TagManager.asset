@@ -15,6 +15,7 @@ TagManager:
   - transparent
   - Teleporter
   - Moving
+  - Lava
   layers:
   - Default
   - TransparentFX
