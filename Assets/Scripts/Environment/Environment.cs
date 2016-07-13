@@ -4,6 +4,7 @@ using UnityStandardAssets._2D;
 
 public class Environment : MonoBehaviour {
 
+    private int deltaTime = 0;
     private bool JoueurEnter = false;
     private float JoueurSpeed;
     private float JoueurJump;
@@ -15,12 +16,16 @@ public class Environment : MonoBehaviour {
     public float JumpBonus = 100;
     public float damageDot = 10;
 
+    public GameObject airBar;
+
     private GameObject m_player;
 
     // Use this for initialization
     void Start () {
 
         m_player = GameObject.FindGameObjectWithTag("Player");
+
+        airBar.SetActive(false);
 
     }
 	
@@ -29,13 +34,29 @@ public class Environment : MonoBehaviour {
         if (gameObject.tag == "Lava" && JoueurEnter == true)
         {
             drainLife();
+            m_player.GetComponent<AirBar>().loseOxygen();
         }
-	}
+
+        if (gameObject.tag == "Water" && JoueurEnter == true)
+        {
+            if(deltaTime == 60)
+            {
+                //drainLife();
+
+                m_player.GetComponent<AirBar>().loseOxygen();
+
+                deltaTime = 0;
+            }
+            deltaTime += 1;
+            
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            airBar.SetActive(true);
             chgtPhysicsJoueur(true, other);
             JoueurEnter = true;
         }   
@@ -51,8 +72,10 @@ public class Environment : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            airBar.SetActive(false);
             chgtPhysicsJoueur(false, other);
             JoueurEnter = false;
+            m_player.GetComponent<AirBar>().resetAir();
         }
 
         if (other.tag == "Projectile")
