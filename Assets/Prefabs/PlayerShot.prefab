@@ -79,6 +79,8 @@ MonoBehaviour:
   - Player
   - smallHeart
   - transparent
+  - Water
+  - Lava
   damage: 1
   isEnemyShot: 0
 --- !u!114 &11466456

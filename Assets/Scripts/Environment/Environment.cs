@@ -8,6 +8,9 @@ public class Environment : MonoBehaviour {
     private float JoueurSpeed;
     private float JoueurJump;
 
+    public float ProjectileSlow = 2;
+    private Vector2 ProjectileSpeed;
+
     public float SpeedLose = 2;
     public float JumpBonus = 100;
     public float damageDot = 10;
@@ -33,22 +36,34 @@ public class Environment : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            chgtPhysics(true, other);
+            chgtPhysicsJoueur(true, other);
             JoueurEnter = true;
         }   
+
+        if(other.tag == "Projectile")
+        {
+            ProjectileSpeed = other.GetComponent<ShotsMove>().GetM_speed();
+            other.GetComponent<ShotsMove>().SetM_speed(new Vector2(ProjectileSpeed.x / 2, ProjectileSpeed.y / 2));
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            chgtPhysics(false, other);
+            chgtPhysicsJoueur(false, other);
             JoueurEnter = false;
         }
-            
+
+        if (other.tag == "Projectile")
+        {
+            ProjectileSpeed = other.GetComponent<ShotsMove>().GetM_speed();
+            other.GetComponent<ShotsMove>().SetM_speed(new Vector2(ProjectileSpeed.x * 2, ProjectileSpeed.y * 2));
+        }
+
     }
 
-    public void chgtPhysics(bool enter, Collider2D other)
+    public void chgtPhysicsJoueur(bool enter, Collider2D other)
     {
         if (enter)
         {

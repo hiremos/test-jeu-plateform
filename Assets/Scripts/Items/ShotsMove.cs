@@ -70,5 +70,15 @@ namespace UnityStandardAssets._2D
             m_direction.x = (float)System.Math.Cos(angle);
             m_direction.y = (float)System.Math.Sin(angle);
         }
+
+        public Vector2 GetM_speed()
+        {
+            return m_speed;
+        }
+
+        public void SetM_speed(Vector2 newM_speed)
+        {
+            m_speed = newM_speed;
+        }
     }
 }
