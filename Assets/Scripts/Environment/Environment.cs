@@ -33,23 +33,32 @@ public class Environment : MonoBehaviour {
 	void Update () {
         if (gameObject.tag == "Lava" && JoueurEnter == true)
         {
-            drainLife();
-            m_player.GetComponent<AirBar>().loseOxygen();
+            
+            if (deltaTime == 60)
+            {
+                drainLife();
+
+                m_player.GetComponent<AirBar>().loseOxygen();
+
+                deltaTime = 0;
+
+            }
+            deltaTime += 1;
         }
 
         if (gameObject.tag == "Water" && JoueurEnter == true)
         {
             if(deltaTime == 60)
             {
-                //drainLife();
+                
 
                 m_player.GetComponent<AirBar>().loseOxygen();
 
                 deltaTime = 0;
             }
             deltaTime += 1;
-            
         }
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -107,8 +116,6 @@ public class Environment : MonoBehaviour {
 
     public void drainLife()
     {
-        Debug.Log("Lave");
         m_player.GetComponent<HealthBar>().setDamages(damageDot);
-
     }
 }
