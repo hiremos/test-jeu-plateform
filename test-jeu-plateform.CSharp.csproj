@@ -88,7 +88,6 @@
     <Compile Include="Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
     <Compile Include="Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
-    <Compile Include="Assets\Damage.cs" />
     <Compile Include="Assets\Scripts\Blocs\DestructByTrigger.cs" />
     <Compile Include="Assets\Scripts\Blocs\Destructible.cs" />
     <Compile Include="Assets\Scripts\Blocs\MovePlateform.cs" />
@@ -98,6 +97,7 @@
     <Compile Include="Assets\Scripts\Blocs\movePlateformAround.cs" />
     <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Damage.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyFire.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnnemyDamage.cs" />
@@ -116,7 +116,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerFireInput.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Scripts\UI\FluctuationLife.cs" />
-    <Compile Include="Assets\Toggle_talk.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
