@@ -115,7 +115,9 @@
     <Compile Include="Assets\Scripts\Player\PlatformerCharacter2D.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerFireInput.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
+    <Compile Include="Assets\Scripts\ShowButton.cs" />
     <Compile Include="Assets\Scripts\UI\FluctuationLife.cs" />
+    <Compile Include="Assets\TalkGestion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
