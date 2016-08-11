@@ -21,9 +21,7 @@ public class ShowButton : MonoBehaviour {
         Debug.Log("enter:"+ other.gameObject);
         if (other.tag == "TalkablePNJ")
         {
-            Transform button;
-
-            button = Instantiate(buttonPrefab) as Transform;
+            Transform button = Instantiate(buttonPrefab) as Transform;
 
             button.SetParent(gameObject.transform);
 
