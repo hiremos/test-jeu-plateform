@@ -2448,6 +2448,30 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 0.5451633
       objectReference: {fileID: 0}
+    - target: {fileID: 442854, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 106598, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
+      propertyPath: m_TagString
+      value: Teleporter
+      objectReference: {fileID: 0}
+    - target: {fileID: 441916, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 441916, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 11428238, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
+      propertyPath: DirectionSortie.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11428238, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
+      propertyPath: DirectionSortie.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a4b84ab20331f94dbd7361cde01b9f5, type: 2}
   m_IsPrefabParent: 0

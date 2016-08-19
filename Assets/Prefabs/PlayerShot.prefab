@@ -75,12 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a7c63f12ff70b49876827b6c888b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transparentTags:
-  - Player
-  - smallHeart
-  - transparent
-  - Water
-  - Lava
+  transparentTags: []
   damage: 1
   isEnemyShot: 0
 --- !u!114 &11466456

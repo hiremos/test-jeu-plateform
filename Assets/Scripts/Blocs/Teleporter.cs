@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets._2D;
 
 public class Teleporter : MonoBehaviour {
 
@@ -7,7 +8,7 @@ public class Teleporter : MonoBehaviour {
     private Vector2 positionTpSortie;
     public bool passageJoueur = true;
     public bool passageTir = false;
-    //private Vector2 positionJoueur;
+    public Vector2 DirectionSortie;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,10 @@ public class Teleporter : MonoBehaviour {
             if (other.tag == "Projectile")
             {
                 other.transform.position = positionTpSortie;
+                if(!(DirectionSortie.x ==0 && DirectionSortie.y==0))
+                {
+                    other.GetComponent<ShotsMove>().m_direction = DirectionSortie;
+                }
             }
         }
 
