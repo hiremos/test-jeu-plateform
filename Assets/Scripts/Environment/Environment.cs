@@ -50,8 +50,6 @@ public class Environment : MonoBehaviour {
         {
             if(deltaTime == 60)
             {
-                
-
                 m_player.GetComponent<AirBar>().loseOxygen();
 
                 deltaTime = 0;
