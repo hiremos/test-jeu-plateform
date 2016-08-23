@@ -3,7 +3,7 @@ using System.Collections;
 
 public class movePlateformAround : MonoBehaviour {
 
-    public Vector2 distance = new Vector2(2, 2);
+    public Vector2 distance;
     public float speed;
     public GameObject[] plateforms;
     
@@ -25,8 +25,6 @@ public class movePlateformAround : MonoBehaviour {
         {
             time += Time.deltaTime * speed;
         }
-        
-        //Debug.Log(time);
 
         float angle = (6 / plateforms.Length);
         for (int i=0;i < plateforms.Length;i++)
