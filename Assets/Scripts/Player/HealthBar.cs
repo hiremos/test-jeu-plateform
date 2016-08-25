@@ -111,7 +111,6 @@ public class HealthBar : MonoBehaviour {
 
     public void upgradeTotalHp()
     {
-        Debug.Log("entrer");
         TotalPv += 3;
         ActualPv = TotalPv;
         healthBar.GetComponent<Scrollbar>().size = 1;

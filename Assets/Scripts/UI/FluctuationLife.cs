@@ -18,14 +18,7 @@ public class FluctuationLife : MonoBehaviour {
         Destroy(gameObject, 3); // 3sec
     }
 	
-	// Update is called once per frame
 	void Update () {
-
-        
-
-
-        // 2 - Calcul du mouvement
-
         movement = new Vector2(
             speed.x * direction.x,
             speed.y * direction.y);

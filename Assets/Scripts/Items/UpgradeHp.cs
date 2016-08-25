@@ -22,7 +22,6 @@ public class UpgradeHp : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("collision");
             m_Player = GameObject.FindGameObjectWithTag("Player");
             m_Player.GetComponent<HealthBar>().upgradeTotalHp();
             Destroy(gameObject);

@@ -70,8 +70,6 @@ public class MovePlateform : MonoBehaviour {
 
     void OnCollisionStay2D(Collision2D other)
     {
-
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Player")
         {
             other.transform.parent = transform;
@@ -80,7 +78,6 @@ public class MovePlateform : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D other)
     {
-        Debug.Log(other);
         if (other.gameObject.tag == "Player")
         {
             other.transform.parent = null;

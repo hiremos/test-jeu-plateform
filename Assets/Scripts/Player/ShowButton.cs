@@ -2,13 +2,14 @@
 using System.Collections;
 
 public class ShowButton : MonoBehaviour {
-
-
+    
     public Transform buttonPrefab;
+
+    private bool canTalk;
 
     // Use this for initialization
     void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -18,24 +19,25 @@ public class ShowButton : MonoBehaviour {
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enter:"+ other.gameObject);
-        if (other.tag == "TalkablePNJ")
+        if (other.tag == "TalkablePNJ" && canTalk == false)
         {
             Transform button = Instantiate(buttonPrefab) as Transform;
 
             button.SetParent(gameObject.transform);
 
             button.GetComponent<Transform>().localPosition = buttonPrefab.GetComponent<Transform>().position;
+
+            canTalk = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "TalkablePNJ")
+        if (other.tag == "TalkablePNJ" && canTalk == true)
         {
-            Debug.Log("exit");
-
             Destroy(gameObject.transform.GetChild(0).gameObject);
+
+            canTalk = false;
         }
     }
     

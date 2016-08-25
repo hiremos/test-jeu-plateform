@@ -33,8 +33,6 @@ public class EnemyHealth : MonoBehaviour
             {
                 actualPv -= shot.damage;
 
-                Debug.Log(actualPv);
-
                 if (actualPv <= 0)
                 {
                     Destroy(gameObject);

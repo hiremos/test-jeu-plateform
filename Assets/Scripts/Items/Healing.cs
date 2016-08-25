@@ -35,9 +35,7 @@ public class Healing : MonoBehaviour {
             {
                 m_Player.GetComponent<HealthBar>().setHeal(6 * heal);
             }
-
             Destroy(heart);
- 
         }
     }
 }

@@ -9,10 +9,12 @@ namespace UnityStandardAssets._2D
     {
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
+        private bool m_talking;
         private GameObject m_pnj;
 
         private void Awake()
         {
+            m_talking = false;
             m_Character = GetComponent<PlatformerCharacter2D>();
         }
 
@@ -22,6 +24,11 @@ namespace UnityStandardAssets._2D
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            }
+            if(!m_talking)
+            {
+                m_talking = Input.GetKey(KeyCode.A);
+                Debug.Log(m_talking);
             }
         }
 
