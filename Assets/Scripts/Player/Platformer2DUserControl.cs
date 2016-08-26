@@ -4,68 +4,63 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
-    [RequireComponent(typeof (PlatformerCharacter2D))]
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
-        private bool m_talking;
         private GameObject m_pnj;
+        private int directionx = 0;
+        private int directiony = 0;
+        public bool canMove;
 
         private void Awake()
         {
-            m_talking = false;
             m_Character = GetComponent<PlatformerCharacter2D>();
         }
 
-
         private void Update()
         {
+            if(!canMove)
+            {
+                m_Character.Move(0, false, false);
+                return;
+            }
+            // Read the inputs.
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
-            if(!m_talking)
+
+            if (Input.GetKey(KeyCode.UpArrow))
             {
-                m_talking = Input.GetKey(KeyCode.A);
-                Debug.Log(m_talking);
+                directiony = 1;
             }
-        }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                directiony = -1;
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                directionx = 1;
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                directionx = -1;
+            }
 
-
-        private void FixedUpdate()
-        {
-            // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            
+
             // Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
+            if((directionx != 0 || directiony != 0))
+            {
+                m_Character.Fire(directionx, directiony);
+            }
+
+            directionx = 0;
+            directiony = 0;
             m_Jump = false;
         }
     }
 }
-
-
-/*
-           GameObject gravity;
-
-           gravity = GameObject.FindGameObjectWithTag("gravitynope");
-
-           if (gravity != null)
-           {
-               Vector3 p = new Vector2(gravity.transform.position.x, gravity.transform.position.y);
-               Vector3 size = new Vector2(gravity.transform.GetChild(0).gameObject.GetComponent<Collider2D>().bounds.size.x, gravity.transform.GetChild(0).gameObject.GetComponent<Collider2D>().bounds.size.y);
-
-
-               if (m_Character.GetComponent<Rigidbody2D>().transform.position.x > p.x && m_Character.GetComponent<Rigidbody2D>().transform.position.x < p.x + size.x)
-               {
-                   //Debug.Log("up");
-                   Physics2D.gravity = new Vector3(0f, -100f, 0f);
-               }
-               else
-               {
-                   //Debug.Log("dwn");
-                   Physics2D.gravity = new Vector3(0f, -8f, 0f);
-               }
-           }*/

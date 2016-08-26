@@ -19,6 +19,7 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+        
 
         private void Awake()
         {
@@ -32,6 +33,8 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
+
+            
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -54,6 +57,7 @@ namespace UnityStandardAssets._2D
 
         public void Move(float move, bool crouch, bool jump)
         {
+            
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
             {
@@ -70,6 +74,7 @@ namespace UnityStandardAssets._2D
             //only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl)
             {
+                
                 // Reduce the speed if crouching by the crouchSpeed multiplier
                 move = (crouch ? move*m_CrouchSpeed : move);
 
@@ -77,7 +82,7 @@ namespace UnityStandardAssets._2D
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+                m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
@@ -102,6 +107,37 @@ namespace UnityStandardAssets._2D
             }
         }
 
+        public void Fire(int directionx,int directiony)
+        {
+            GameObject joueur;
+
+            joueur = GameObject.FindGameObjectWithTag("Player");
+
+            bool m_FacingRight = joueur.GetComponent<PlatformerCharacter2D>().isFacingRight();
+            // 5 - Tir
+            float shootx = 0;
+            float shooty = directiony;
+           
+
+            if (directionx == 1 && m_FacingRight == true)
+            {
+                shootx = 1;
+            }
+            else if (directionx == -1 && m_FacingRight == false)
+            {
+                shootx = -1;
+            }
+
+            if (shootx != 0 || shooty != 0)
+            {
+                Weapon weapon = GetComponent<Weapon>();
+                if (weapon != null)
+                {
+                    // false : le joueur n'est pas un ennemi
+                    weapon.Attack(false, new Vector2(shootx, shooty));
+                }
+            }
+        }
 
         private void Flip()
         {

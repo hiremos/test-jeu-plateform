@@ -21,13 +21,7 @@ public class ShowButton : MonoBehaviour {
     {
         if (other.tag == "TalkablePNJ" && canTalk == false)
         {
-            Transform button = Instantiate(buttonPrefab) as Transform;
-
-            button.SetParent(gameObject.transform);
-
-            button.GetComponent<Transform>().localPosition = buttonPrefab.GetComponent<Transform>().position;
-
-            canTalk = true;
+           
         }
     }
 

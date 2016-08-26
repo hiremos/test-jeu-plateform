@@ -113,13 +113,17 @@
     <Compile Include="Assets\Scripts\Player\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Player\Platformer2DUserControl.cs" />
     <Compile Include="Assets\Scripts\Player\PlatformerCharacter2D.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerFireInput.cs" />
+    <Compile Include="Assets\Scripts\Player\PnjDialogues\ActivateTextAtLine.cs" />
+    <Compile Include="Assets\Scripts\Player\PnjDialogues\TextBoxManager.cs" />
+    <Compile Include="Assets\Scripts\Player\PnjDialogues\TextImporter.cs" />
     <Compile Include="Assets\Scripts\Player\ShowButton.cs" />
     <Compile Include="Assets\Scripts\Player\Weapon.cs" />
     <Compile Include="Assets\Scripts\UI\FluctuationLife.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Scripts\Player\PnjDialogues\PNJTXT\Dragon.txt" />
+    <None Include="Assets\Scripts\Player\PnjDialogues\PNJTXT\exemple.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

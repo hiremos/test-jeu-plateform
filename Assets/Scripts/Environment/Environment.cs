@@ -114,6 +114,6 @@ public class Environment : MonoBehaviour {
 
     public void drainLife()
     {
-        m_player.GetComponent<HealthBar>().setDamages(damageDot);
+        m_player.GetComponent<HealthBar>().setDamages(damageDot,false);
     }
 }

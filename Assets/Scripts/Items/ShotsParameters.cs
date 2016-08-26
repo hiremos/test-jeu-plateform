@@ -28,6 +28,10 @@ public class ShotsParameters : MonoBehaviour
     {
         if(other.tag!="Teleporter")
         {
+            if(other.tag == "Player")
+            {
+                other.GetComponent<HealthBar>().setDamages(damage, false);
+            }
             Destroy(gameObject);
         }
     }

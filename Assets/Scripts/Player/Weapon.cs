@@ -4,7 +4,6 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
-    [RequireComponent(typeof(PlatformerCharacter2D))]
     public class Weapon : MonoBehaviour
     {
         //--------------------------------

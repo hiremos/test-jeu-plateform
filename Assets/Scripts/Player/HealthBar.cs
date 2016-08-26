@@ -65,11 +65,14 @@ public class HealthBar : MonoBehaviour {
 
     }
 
-    public void setDamages(float damage)
+    public void setDamages(float damage,bool invincibleState)
     {
         if (!isNoob)
         {
-            invincibleStateDelay = maxInvincibleDelay;
+            if(invincibleState == true)
+            {
+                invincibleStateDelay = maxInvincibleDelay;
+            }
 
             ActualPv -= damage;
 
@@ -155,7 +158,7 @@ public class HealthBar : MonoBehaviour {
     {
         // Création d'un objet copie du prefab
         var dialogueTransform = Instantiate(dialogue) as Transform;
-        dialogueTransform.transform.parent = UI.transform;
+        dialogueTransform.transform.SetParent(UI.transform);
 
         
         float x = m_player.transform.position.x;

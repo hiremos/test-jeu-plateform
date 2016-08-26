@@ -1,0 +1,6 @@
+Tests
+
+Ceci est un texte issu d'un fichier de test.
+La preuve ?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros tortor, mollis quis magna a, posuere fringilla nisl. Morbi massa tortor, faucibus aliquet ultricies ullamcorper, ullamcorper eu urna. Fusce et pulvinar dui, sed lacinia lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget lobortis metus, eget laoreet magna. Ut sed lacinia nisi, a varius arcu. Integer eget eros aliquam, hendrerit nisl eu, vestibulum felis. Pellentesque in eros vel arcu blandit pharetra et eget lorem. Fusce porttitor mauris vitae ipsum faucibus convallis. Praesent ullamcorper ipsum neque, eget tincidunt felis laoreet id.

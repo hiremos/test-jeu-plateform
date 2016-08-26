@@ -31,7 +31,7 @@ public class EnnemyDamage : MonoBehaviour {
         else if (other.tag == "Player")
         {
             m_Player = GameObject.FindGameObjectWithTag("Player");
-            m_Player.GetComponent<HealthBar>().setDamages(damage);
+            m_Player.GetComponent<HealthBar>().setDamages(damage,true);
         }
     }
 
