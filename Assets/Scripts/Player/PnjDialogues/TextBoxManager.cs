@@ -24,7 +24,13 @@ public class TextBoxManager : MonoBehaviour {
 
     public bool stopPlayerMovement;
 
-    private bool activationButton = false;
+    private bool firstActivation = true;
+
+    private bool isTyping = false;
+    private bool cancelTyping = false;
+
+    public float typeSpeed;
+
 
     // Use this for initialization
     void Start()
@@ -56,21 +62,56 @@ public class TextBoxManager : MonoBehaviour {
         {
             return;
         }
-        theText.text = textLines[currentLine];
 
-        if (Input.GetKeyDown(KeyCode.A) && activationButton)
+        //theText.text = textLines[currentLine];
+
+
+
+        if (Input.GetKeyDown(KeyCode.A) && !firstActivation)
         {
-            currentLine+=1;
+            if (!isTyping)
+            {
+                currentLine += 1;
+                if (currentLine > endAtLine)
+                {
+                    disableTextBox();
+                }
+                else
+                {
+                    StartCoroutine(TextScroll(textLines[currentLine]));
+                }
+            }
+            else if(isTyping && !cancelTyping)
+            {
+                cancelTyping = true;
+            }
         }
 
-        if(!activationButton)
+        if(firstActivation)
         {
-            activationButton = true;
+            firstActivation = false;
         }
-        if(currentLine > endAtLine)
+        
+    }
+
+    private IEnumerator TextScroll(string lineOfText)
+    {
+        int letter = 0;
+
+        theText.text = "";
+
+        isTyping = true;
+        cancelTyping = false;
+
+        while (isTyping && !cancelTyping && (letter < lineOfText.Length - 1))
         {
-            disableTextBox();
+            theText.text += lineOfText[letter];
+            letter++;
+            yield return new WaitForSeconds(typeSpeed);
         }
+        theText.text = lineOfText;
+        isTyping = false;
+        cancelTyping = false;
     }
 
     public void enableTextBox()
@@ -81,7 +122,10 @@ public class TextBoxManager : MonoBehaviour {
         {
             player.canMove = false;
         }
-        activationButton = false;
+        firstActivation = true;
+
+
+        StartCoroutine(TextScroll(textLines[currentLine]));
     }
 
     public void disableTextBox()

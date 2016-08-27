@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 public class HealthBar : MonoBehaviour {
     
     public GameObject healthBar;
-    private GameObject m_player;
     public Transform dialogue;
-    public GameObject UI;
 
     public float totalPv;
     public float actualPv;
@@ -31,8 +29,6 @@ public class HealthBar : MonoBehaviour {
         ActualPv = TotalPv;
         updateBar();
         invincibleStateDelay = 0f;
-        m_player = GameObject.FindGameObjectWithTag("Player");
-        UI = GameObject.FindGameObjectWithTag("Interface");
     }
 	
 	// Update is called once per frame
@@ -47,19 +43,19 @@ public class HealthBar : MonoBehaviour {
     public void updateBar()
     {
 
-        Image CouleurBarre = healthBar.transform.FindChild("Mask").FindChild("sprit").GetComponent<Image>();
+        Image image = healthBar.GetComponent<Image>();
 
         if (getPourcentagePv() >= 0.5f)
         {
-            CouleurBarre.color = colorHightHpLevel;
+            image.color = colorHightHpLevel;
         } else if (getPourcentagePv() < 0.5f && getPourcentagePv() >= 0.15f)
         {
-            CouleurBarre.color = colorMidHpLevel;
+            image.color = colorMidHpLevel;
         } else {
-            CouleurBarre.color = colorLowHpLevel;
+            image.color = colorLowHpLevel;
         }
 
-        healthBar.GetComponent<Scrollbar>().size = getPourcentagePv();
+        image.fillAmount = getPourcentagePv();
 
         healthBar.transform.FindChild("Pv").GetComponent<Text>().text = ActualPv+"/"+TotalPv;
 
@@ -80,7 +76,7 @@ public class HealthBar : MonoBehaviour {
 
             updateBar();
 
-            if (healthBar.GetComponent<Scrollbar>().size <= 0)
+            if (actualPv <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex);
             }
@@ -158,11 +154,11 @@ public class HealthBar : MonoBehaviour {
     {
         // Création d'un objet copie du prefab
         var dialogueTransform = Instantiate(dialogue) as Transform;
-        dialogueTransform.transform.SetParent(UI.transform);
+        dialogueTransform.transform.SetParent(healthBar.transform);
 
         
-        float x = m_player.transform.position.x;
-        float y = m_player.transform.position.y;
+        float x = gameObject.transform.position.x;
+        float y = gameObject.transform.position.y;
         dialogueTransform.transform.position = new Vector2(x, y);
 
         if (isHeal)
