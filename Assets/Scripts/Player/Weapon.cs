@@ -88,6 +88,7 @@ namespace UnityStandardAssets._2D
 
                 // Propriétés du script
                 ShotsParameters shot = shotTransform.gameObject.GetComponent<ShotsParameters>();
+                shot.setDamage(2);
                 if (shot != null)
                 {
                     shot.isEnemyShot = isEnemy;

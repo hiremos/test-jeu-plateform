@@ -6,7 +6,6 @@ using UnityStandardAssets._2D;
 public class ActivateTextAtLine : MonoBehaviour {
 
     public GameObject button;
-    public Transform shotPrefab;
     public TextAsset theText;
     public Sprite theFace;
 
@@ -17,6 +16,8 @@ public class ActivateTextAtLine : MonoBehaviour {
 
     public bool requireButtonPress;
     private bool waitForPress;
+    
+
 
     public bool destroyWhenActivated;
 

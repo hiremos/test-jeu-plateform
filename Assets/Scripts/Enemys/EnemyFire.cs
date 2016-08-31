@@ -60,18 +60,14 @@ public class EnemyFire : MonoBehaviour {
         //recupère la distance entre le joueur et l'objet
         float distanceJoueur = Vector2.Distance(posPlayer, posSource);
         
-        //theta *= 180 / pi // rads to degs
 
         m_direction.x = posPlayer.x - posSource.x;
         m_direction.y = posPlayer.y - posSource.y;
-        //Debug.Log("BeforeAngle:" + m_direction);
+
         double angle = System.Math.Atan2(m_direction.y, m_direction.x);
         m_direction.x = (float)System.Math.Cos(angle);
         m_direction.y = (float)System.Math.Sin(angle);
-
-        //Debug.Log("First Dir:" + m_direction);
-
-        //Debug.Log(distanceJoueur);
+        
         if (distanceJoueur <= 15)
         {
             if (lockJoueur)

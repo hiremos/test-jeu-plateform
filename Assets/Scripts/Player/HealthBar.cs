@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour {
     
-    public GameObject healthBar;
+    public Image healthBar;
+    public Text textePv;
+
     public Transform dialogue;
 
     public float totalPv;
@@ -42,22 +44,26 @@ public class HealthBar : MonoBehaviour {
 
     public void updateBar()
     {
-
-        Image image = healthBar.GetComponent<Image>();
-
-        if (getPourcentagePv() >= 0.5f)
+        if(healthBar != null && textePv != null)
         {
-            image.color = colorHightHpLevel;
-        } else if (getPourcentagePv() < 0.5f && getPourcentagePv() >= 0.15f)
-        {
-            image.color = colorMidHpLevel;
-        } else {
-            image.color = colorLowHpLevel;
+            if (getPourcentagePv() >= 0.5f)
+            {
+                healthBar.color = colorHightHpLevel;
+            }
+            else if (getPourcentagePv() < 0.5f && getPourcentagePv() >= 0.15f)
+            {
+                healthBar.color = colorMidHpLevel;
+            }
+            else
+            {
+                healthBar.color = colorLowHpLevel;
+            }
+
+            healthBar.fillAmount = getPourcentagePv();
+            textePv.text = ActualPv + "/" + TotalPv;
         }
+        
 
-        image.fillAmount = getPourcentagePv();
-
-        healthBar.transform.FindChild("Pv").GetComponent<Text>().text = ActualPv+"/"+TotalPv;
 
     }
 

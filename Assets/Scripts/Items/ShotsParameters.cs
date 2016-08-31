@@ -11,7 +11,7 @@ public class ShotsParameters : MonoBehaviour
     /// <summary>
     /// Points de dégâts infligés
     /// </summary>
-    public int damage = 1;
+    public int damage;
 
     /// <summary>
     /// Projectile ami ou ennemi ?
@@ -28,11 +28,19 @@ public class ShotsParameters : MonoBehaviour
     {
         if(other.tag!="Teleporter")
         {
-            if(other.tag == "Player")
+            if (other.tag == "Player")
             {
                 other.GetComponent<HealthBar>().setDamages(damage, false);
             }
+            if (other.tag == "Ennemy")
+            {
+            }
             Destroy(gameObject);
         }
+    }
+
+    public void setDamage(int domm)
+    {
+        damage = domm;
     }
 }

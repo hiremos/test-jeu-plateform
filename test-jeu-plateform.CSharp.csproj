@@ -101,6 +101,8 @@
     <Compile Include="Assets\Scripts\Enemys\EnemyFire.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemys\EnnemyDamage.cs" />
+    <Compile Include="Assets\Scripts\Enemys\FollowPath.cs" />
+    <Compile Include="Assets\Scripts\Enemys\PathEditor.cs" />
     <Compile Include="Assets\Scripts\Environment\Environment.cs" />
     <Compile Include="Assets\Scripts\FallingPlateform.cs" />
     <Compile Include="Assets\Scripts\Items\Healing.cs" />
