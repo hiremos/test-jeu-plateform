@@ -70,8 +70,7 @@ public class Environment : MonoBehaviour {
 
         if(other.tag == "Projectile")
         {
-            ProjectileSpeed = other.GetComponent<ShotsMove>().GetM_speed();
-            other.GetComponent<ShotsMove>().SetM_speed(new Vector2(ProjectileSpeed.x / 2, ProjectileSpeed.y / 2));
+            other.GetComponent<ShotsManager>().SetM_speed(other.GetComponent<ShotsManager>().GetM_speed() / 2);
         }
     }
 
@@ -87,8 +86,7 @@ public class Environment : MonoBehaviour {
 
         if (other.tag == "Projectile")
         {
-            ProjectileSpeed = other.GetComponent<ShotsMove>().GetM_speed();
-            other.GetComponent<ShotsMove>().SetM_speed(new Vector2(ProjectileSpeed.x * 2, ProjectileSpeed.y * 2));
+            other.GetComponent<ShotsManager>().SetM_speed(other.GetComponent<ShotsManager>().GetM_speed() * 2);
         }
 
     }

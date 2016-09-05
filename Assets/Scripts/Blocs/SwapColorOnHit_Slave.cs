@@ -17,20 +17,17 @@ public class SwapColorOnHit_Slave : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<ShotsParameters>() != null)
+        if (other.GetComponent<ShotsManager>() != null)
         {
-            if (other.GetComponent<ShotsParameters>().isEnemyShot == false)
+            if (isActivate)
             {
-                if (isActivate)
-                {
-                    gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1);
-                    isActivate = false;
-                }
-                else
-                {
-                    gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
-                    isActivate = true;
-                }
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1);
+                isActivate = false;
+            }
+            else
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0, 0);
+                isActivate = true;
             }
         }
 

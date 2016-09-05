@@ -28,8 +28,8 @@ TagManager:
   - 
   - PNJ
   - Objects
-  - Ennemy
-  - Player
+  - EnnemyCollider
+  - PlayerCollider
   - PlayerAdds
   - EnnemyAdds
   - EnnemyPhysics

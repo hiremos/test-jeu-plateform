@@ -20,17 +20,20 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
+            //Si le joueur ne doit pas interagir, on bloque toutes lecture d'input.
             if(!canMove)
             {
                 m_Character.Move(0, false, false);
                 return;
             }
-            // Read the inputs.
+            
+            //Lecture input pour jump(ESPACE)
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
+            //Lecture inputs pour tirs (Fleches directionelles)
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 directiony = 1;
@@ -48,16 +51,21 @@ namespace UnityStandardAssets._2D
                 directionx = -1;
             }
 
+            //Lecture input pour s'accroupir (CTRL Gauche)
             bool crouch = Input.GetKey(KeyCode.LeftControl);
+
+            //Lecture input pour marcher (Lecture de la direction sur l'axe horizontal(Q ou D)
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
 
-            // Pass all parameters to the character control script.
+            // On envoie tous les parametres lus precedement au script de controle du personnage.
             m_Character.Move(h, crouch, m_Jump);
+
             if((directionx != 0 || directiony != 0))
             {
                 m_Character.Fire(directionx, directiony);
             }
 
+            // On reset les variables pour lire l'input suivante.
             directionx = 0;
             directiony = 0;
             m_Jump = false;

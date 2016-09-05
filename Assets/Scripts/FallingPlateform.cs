@@ -3,29 +3,16 @@ using System.Collections;
 
 public class FallingPlateform : MonoBehaviour
 {
-    private AudioClip sound;
-    private bool hasPlayed = false;
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-
-
+    public AudioClip sound;
+    private bool hasFall = false;
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-
-            if (hasPlayed == false)
+            if (hasFall == false)
             {
-                hasPlayed = true;
+                hasFall = true;
                 GetComponent<AudioSource>().PlayOneShot(sound);
                 gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
             }

@@ -15,7 +15,7 @@ public class Destructible : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<ShotsParameters>().isEnemyShot == false)
+        if(other.GetComponent<ShotsManager>() != null)
         {
             Destroy(gameObject);
         }

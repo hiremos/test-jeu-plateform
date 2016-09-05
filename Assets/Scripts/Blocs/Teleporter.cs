@@ -30,7 +30,7 @@ public class Teleporter : MonoBehaviour {
                 other.transform.position = positionTpSortie;
                 if(!(DirectionSortie.x ==0 && DirectionSortie.y==0))
                 {
-                    other.GetComponent<ShotsMove>().m_direction = DirectionSortie;
+                    other.GetComponent<ShotsManager>().m_direction = DirectionSortie;
                 }
             }
         }

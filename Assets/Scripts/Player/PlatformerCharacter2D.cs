@@ -24,6 +24,7 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             // Setting up references.
+            m_GroundCheck = transform.Find("GroundCheck");
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -32,35 +33,11 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+            m_Grounded = m_GroundCheck.GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.GetMask("Default"));
             
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                if (colliders[i].gameObject != gameObject)
-                {
-                    m_Grounded = true;
-                }
-                
-            }
-            
-           
-
-            // Set the vertical animation
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
             
-            if (m_Anim.GetFloat("vSpeed") == 0f)
-            {
-                m_Grounded = true;
-            }
-            else
-            {
-                m_Grounded = false;
-            }
-
             m_Anim.SetBool("Ground", m_Grounded);
-
         }
 
 
@@ -105,6 +82,7 @@ namespace UnityStandardAssets._2D
                     // ... flip the player.
                     Flip();
                 }
+                gameObject.GetComponent<SpriteRenderer>().flipX = !m_FacingRight;
             }
             // If the player should jump...
             if (m_Grounded && jump && m_Anim.GetBool("Ground"))
@@ -118,32 +96,26 @@ namespace UnityStandardAssets._2D
 
         public void Fire(int directionx,int directiony)
         {
-            GameObject joueur;
-
-            joueur = GameObject.FindGameObjectWithTag("Player");
-
-            bool m_FacingRight = joueur.GetComponent<PlatformerCharacter2D>().isFacingRight();
             // 5 - Tir
-            float shootx = 0;
+            float shootx = directionx;
             float shooty = directiony;
            
 
-            if (directionx == 1 && m_FacingRight == true)
+            if (shootx == 1 && m_FacingRight != true)
             {
-                shootx = 1;
+                shootx = 0;
             }
-            else if (directionx == -1 && m_FacingRight == false)
+            else if (directionx == -1 && m_FacingRight != false)
             {
-                shootx = -1;
+                shootx = 0;
             }
 
             if (shootx != 0 || shooty != 0)
             {
-                Weapon weapon = GetComponent<Weapon>();
+                PlayerWeaponManager weapon = GetComponent<PlayerWeaponManager>();
                 if (weapon != null)
                 {
-                    // false : le joueur n'est pas un ennemi
-                    weapon.Attack(false, new Vector2(shootx, shooty));
+                    weapon.Attack(new Vector2(shootx, shooty));
                 }
             }
         }
@@ -154,9 +126,9 @@ namespace UnityStandardAssets._2D
             m_FacingRight = !m_FacingRight;
 
             // Multiply the player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
+            /*Vector3 theScale = transform.localScale;
             theScale.x *= -1;
-            transform.localScale = theScale;
+            transform.localScale = theScale;*/
         }
 
         public bool isFacingRight()

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Web v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WebPlayer:6</UnityBuildTarget>
     <UnityVersion>5.3.5f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -97,17 +99,17 @@
     <Compile Include="Assets\Scripts\Blocs\movePlateformAround.cs" />
     <Compile Include="Assets\Scripts\Camera2DFollow.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Damage.cs" />
-    <Compile Include="Assets\Scripts\Enemys\EnemyFire.cs" />
-    <Compile Include="Assets\Scripts\Enemys\EnemyHealth.cs" />
-    <Compile Include="Assets\Scripts\Enemys\EnnemyDamage.cs" />
+    <Compile Include="Assets\Scripts\Dialogues PNJ\ActivateTextAtLine.cs" />
+    <Compile Include="Assets\Scripts\Dialogues PNJ\TextBoxManager.cs" />
+    <Compile Include="Assets\Scripts\Dialogues PNJ\TextImporter.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyWeaponManager.cs" />
     <Compile Include="Assets\Scripts\Enemys\FollowPath.cs" />
     <Compile Include="Assets\Scripts\Enemys\PathEditor.cs" />
     <Compile Include="Assets\Scripts\Environment\Environment.cs" />
     <Compile Include="Assets\Scripts\FallingPlateform.cs" />
     <Compile Include="Assets\Scripts\Items\Healing.cs" />
-    <Compile Include="Assets\Scripts\Items\ShotsMove.cs" />
-    <Compile Include="Assets\Scripts\Items\ShotsParameters.cs" />
+    <Compile Include="Assets\Scripts\Items\ShotsManager.cs" />
     <Compile Include="Assets\Scripts\Items\UpgradeHp.cs" />
     <Compile Include="Assets\Scripts\Level\Restarter.cs" />
     <Compile Include="Assets\Scripts\Level\SoundEffectsHelper.cs" />
@@ -115,17 +117,14 @@
     <Compile Include="Assets\Scripts\Player\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Player\Platformer2DUserControl.cs" />
     <Compile Include="Assets\Scripts\Player\PlatformerCharacter2D.cs" />
-    <Compile Include="Assets\Scripts\Player\PnjDialogues\ActivateTextAtLine.cs" />
-    <Compile Include="Assets\Scripts\Player\PnjDialogues\TextBoxManager.cs" />
-    <Compile Include="Assets\Scripts\Player\PnjDialogues\TextImporter.cs" />
-    <Compile Include="Assets\Scripts\Player\ShowButton.cs" />
-    <Compile Include="Assets\Scripts\Player\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerWeaponManager.cs" />
     <Compile Include="Assets\Scripts\UI\FluctuationLife.cs" />
+    <Compile Include="Assets\Scripts\Items\poisonManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-    <None Include="Assets\Scripts\Player\PnjDialogues\PNJTXT\Dragon.txt" />
-    <None Include="Assets\Scripts\Player\PnjDialogues\PNJTXT\exemple.txt" />
+    <None Include="Assets\Scripts\Dialogues PNJ\Textes\Dragon.txt" />
+    <None Include="Assets\Scripts\Dialogues PNJ\Textes\exemple.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -158,25 +157,27 @@ public class HealthBar : MonoBehaviour {
 
     public void afficherFluctuationLife(bool isHeal, float value)
     {
-        // Création d'un objet copie du prefab
-        var dialogueTransform = Instantiate(dialogue) as Transform;
-        dialogueTransform.transform.SetParent(healthBar.transform);
-
-        
-        float x = gameObject.transform.position.x;
-        float y = gameObject.transform.position.y;
-        dialogueTransform.transform.position = new Vector2(x, y);
-
-        if (isHeal)
+        if (dialogue != null)
         {
-            dialogueTransform.GetComponent<Text>().color = Color.green;
-            dialogueTransform.GetComponent<Text>().text = "+" + value;
-        } else
-        {
-            dialogueTransform.GetComponent<Text>().color = Color.red;
-            dialogueTransform.GetComponent<Text>().text = "-" + value;
+            // Création d'un objet copie du prefab
+            var dialogueTransform = Instantiate(dialogue) as Transform;
+            dialogueTransform.transform.SetParent(healthBar.transform);
+
+
+            float x = gameObject.transform.position.x;
+            float y = gameObject.transform.position.y;
+            dialogueTransform.transform.position = new Vector2(x, y);
+
+            if (isHeal)
+            {
+                dialogueTransform.GetComponent<Text>().color = Color.green;
+                dialogueTransform.GetComponent<Text>().text = "+" + value;
+            }
+            else
+            {
+                dialogueTransform.GetComponent<Text>().color = Color.red;
+                dialogueTransform.GetComponent<Text>().text = "-" + value;
+            }
         }
-
-        
     }
 }
