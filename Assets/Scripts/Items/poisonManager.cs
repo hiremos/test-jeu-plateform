@@ -4,6 +4,7 @@ public class poisonManager : MonoBehaviour {
 
     public Transform flaque;
     public float X = 300;
+    public int damages = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,10 @@ public class poisonManager : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.GetComponent<HealthBar>() != null)
+        {
+            other.GetComponent<HealthBar>().setDamages(damages, false);
+        }
         Debug.Log("op");
         Transform flaquep = Instantiate(flaque);
         flaquep.position = transform.position;

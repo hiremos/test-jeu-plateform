@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flaque: {fileID: 490120, guid: eea2f71413067be48baf9eac6e20c52c, type: 2}
+  X: 300
+  damages: 10
 --- !u!212 &21204848
 SpriteRenderer:
   m_ObjectHideFlags: 1
