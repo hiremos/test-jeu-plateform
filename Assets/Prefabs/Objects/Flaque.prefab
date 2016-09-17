@@ -28,6 +28,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 436674}
   - 61: {fileID: 6152950}
+  - 114: {fileID: 11468214}
   m_Layer: 13
   m_Name: DamageZone
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -77.26, y: 14.041983, z: 0}
   m_LocalScale: {x: 0.66458565, y: 0.66458476, z: 0.37514722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -125,6 +126,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11468214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011288e5a73c745478176539f56c3240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damages: 2
+  delaiDeReaplicationDuPoison: 2
+  timerApplication: 0
+  dureePoisonApplique: 3
 --- !u!212 &21257536
 SpriteRenderer:
   m_ObjectHideFlags: 1

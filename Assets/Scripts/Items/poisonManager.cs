@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class poisonManager : MonoBehaviour {
+public class PoisonManager : MonoBehaviour {
 
     public Transform flaque;
     public float X = 300;
@@ -9,7 +9,6 @@ public class poisonManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         var speed = new Vector2(X, 500);
-        Debug.Log(speed);
         gameObject.GetComponent<Rigidbody2D>().AddForce(speed);
     }
 	
@@ -21,11 +20,16 @@ public class poisonManager : MonoBehaviour {
     {
         if(other.GetComponent<HealthBar>() != null)
         {
-            other.GetComponent<HealthBar>().setDamages(damages, false);
+            other.GetComponent<HealthBar>().setDamages(damages);
         }
-        Debug.Log("op");
         Transform flaquep = Instantiate(flaque);
         flaquep.position = transform.position;
+        flaquep.GetComponentInChildren<PoisonDamages>().setDamages((damages / 2)+1);
         Destroy(gameObject);
+    }
+
+    public void setDamage(int dam)
+    {
+        damages = dam;
     }
 }

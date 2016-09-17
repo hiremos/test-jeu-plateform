@@ -25,8 +25,7 @@ public class ShotsManager : MonoBehaviour
 
     void Start()
     {
-        // 2 - Destruction programmée
-        Destroy(gameObject, 10); // 20sec
+        Destroy(gameObject, 10);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -35,7 +34,7 @@ public class ShotsManager : MonoBehaviour
         {
             if (other.GetComponent<HealthBar>() != null)
             {
-                other.GetComponent<HealthBar>().setDamages(damage, false);
+                other.GetComponent<HealthBar>().setDamages(damage);
             }
             if(other.GetComponent<EnemyManager>() != null)
             {

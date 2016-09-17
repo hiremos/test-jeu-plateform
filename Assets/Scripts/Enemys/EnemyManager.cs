@@ -1,30 +1,50 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Gestion des points de vie et des dégâts
-/// </summary>
+[AddComponentMenu("Transform/EnemyManager")]
 public class EnemyManager : MonoBehaviour
 {
     public Transform dialogue;
 
-    private GameObject m_Player;
+    public bool canMove = true;
+    public bool airControl = true;
+    public bool gravityAffected = true;
 
-    public float totalPv;
+    private BoxCollider2D m_GroundCheck;   // A position marking where to check for ceilings
+    private Rigidbody2D rb;
+    [SerializeField]
+    private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
-    public bool invincibilityODT;
+    public float totalPv = 10;
 
-    public float damagesOnHit;
-    /*
-    public bool isBoss = false;
-    public float[] bossPhases;
-    */
+    [HideInInspector]
+    public bool m_Grounded;
 
+
+    public float moveSpeed=50f;
+    public float maxJumpHeigth = 3;
     private float actualPv;
 
-    void Start()
+
+    void Awake()
     {
         actualPv = totalPv;
+        if (canMove)
+        {
+            rb = GetComponent<Rigidbody2D>();
+            if (gravityAffected)
+            {
+                m_GroundCheck = transform.Find("GroundCheck").GetComponent<BoxCollider2D>();
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(m_GroundCheck != null)
+        {
+            m_Grounded = m_GroundCheck.IsTouchingLayers(m_WhatIsGround);
+        }
     }
 
     public void takeDamage(int damages)
@@ -34,14 +54,6 @@ public class EnemyManager : MonoBehaviour
         if (actualPv <= 0)
         {
             Destroy(gameObject);
-        }
-    }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.name == "Player")
-        {
-            other.GetComponent<HealthBar>().setDamages(damagesOnHit, invincibilityODT);
         }
     }
 
@@ -70,4 +82,29 @@ public class EnemyManager : MonoBehaviour
             }
         }
     }
+
+    public void Move(float move, float jumpHeigth)
+    {
+        if (canMove)
+        {
+            //only control the player if grounded or airControl is turned on
+            if (m_Grounded || airControl|| !gravityAffected)
+            {
+                // Move the character
+                rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);
+            }
+            // If the player should jump...
+            if (m_Grounded && jumpHeigth > 0)
+            {
+                if (jumpHeigth > maxJumpHeigth)
+                {
+                    jumpHeigth = maxJumpHeigth;
+                }
+                // Add a vertical force to the player.
+                m_Grounded = false;
+                rb.AddForce(new Vector2(0f, jumpHeigth * 150f));
+            }
+        }
+    }
+
 }

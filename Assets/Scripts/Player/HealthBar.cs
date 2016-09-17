@@ -16,29 +16,10 @@ public class HealthBar : MonoBehaviour {
     public Color colorMidHpLevel;
     public Color colorLowHpLevel;
 
-    public float maxInvincibleDelay = 1f;
-
-    //--------------------------------
-    // 2 - Rechargement
-    //--------------------------------
-
-    private float invincibleStateDelay;
-    
-
-    // Use this for initialization
     void Start () {
         ActualPv = TotalPv;
         updateBar();
-        invincibleStateDelay = 0f;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        if (invincibleStateDelay > 0)
-        {
-            invincibleStateDelay -= Time.deltaTime;
-        }
-
+        
     }
 
     public void updateBar()
@@ -61,20 +42,12 @@ public class HealthBar : MonoBehaviour {
             healthBar.fillAmount = getPourcentagePv();
             textePv.text = ActualPv + "/" + TotalPv;
         }
-        
-
-
     }
 
-    public void setDamages(float damage,bool invincibleState)
+    public void setDamages(float damage)
     {
-        if (!isNoob)
+        if (!GetComponent<EffectsManager>().effets[GetComponent<EffectsManager>().Invincible].actif)
         {
-            if(invincibleState == true)
-            {
-                invincibleStateDelay = maxInvincibleDelay;
-            }
-
             ActualPv -= damage;
 
             afficherFluctuationLife(false, damage);
@@ -87,8 +60,6 @@ public class HealthBar : MonoBehaviour {
             }
         }
     }
-
-   
 
     public float getPourcentagePv()
     {
@@ -111,22 +82,11 @@ public class HealthBar : MonoBehaviour {
 
     }
 
-
-
     public void upgradeTotalHp()
     {
         TotalPv += 3;
         ActualPv = TotalPv;
-        healthBar.GetComponent<Scrollbar>().size = 1;
         updateBar();
-    }
-
-    public bool isNoob
-    {
-        get
-        {
-            return !(invincibleStateDelay <= 0f);
-        }
     }
 
     public float TotalPv

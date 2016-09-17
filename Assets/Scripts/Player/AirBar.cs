@@ -5,22 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class AirBar : MonoBehaviour {
 
-    public GameObject airBar;
+    public Image airBar;
+    public Text texteAir;
+    
     public float totalAir;
     public float actualAir;
-
-    private GameObject m_player;
-    public GameObject UI;
-
     public Color colorAir;
 
     // Use this for initialization
     void Start () {
         actualAir = totalAir;
+        airBar.color = colorAir;
         updateBar();
-        m_player = GameObject.FindGameObjectWithTag("Player");
-        UI = GameObject.FindGameObjectWithTag("Interface");
-        
     }
 	
 	// Update is called once per frame
@@ -30,17 +26,11 @@ public class AirBar : MonoBehaviour {
 
     public void updateBar()
     {
-
-        Image CouleurBarre = airBar.transform.FindChild("Mask").FindChild("sprit").GetComponent<Image>();
-
-        //Debug.Log(CouleurBarre);
-
-        airBar.GetComponent<Scrollbar>().size = getPourcentageAir();
-
-        CouleurBarre.color = colorAir;
-
-        airBar.transform.FindChild("Air").GetComponent<Text>().text = actualAir + "/" + totalAir;
-
+        if (airBar != null && texteAir != null)
+        {
+            airBar.fillAmount = getPourcentageAir();
+            texteAir.text = actualAir + "/" + totalAir;
+        }
     }
 
     public float getPourcentageAir()
@@ -54,14 +44,9 @@ public class AirBar : MonoBehaviour {
         updateBar();
     }
 
-    public void loseOxygen()
+    public void loseOxygen(int quantity)
     {
-        actualAir -= 1;
+        actualAir -= quantity;
         updateBar();
-
-        if (actualAir <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex);
-        }
     }
 }

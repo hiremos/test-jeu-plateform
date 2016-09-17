@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityStandardAssets._2D;
 
 public class TextBoxManager : MonoBehaviour {
 

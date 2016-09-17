@@ -1,44 +1,66 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets._2D;
 
 public class Teleporter : MonoBehaviour {
 
+    public GameObject button;
+
+    public bool requireButtonPress = true;
+    private bool waitForPress = false;
+
     public GameObject teleporterSortie;
-    private Vector2 positionTpSortie;
     public bool passageJoueur = true;
     public bool passageTir = false;
     public Vector2 DirectionSortie;
 
-	// Use this for initialization
-	void Start () {
-        positionTpSortie = teleporterSortie.transform.position;
-        positionTpSortie.y += 1;
-	}
+    private Collider2D objectToTp;
+    
 	
 	// Update is called once per frame
 	void Update () {
-	    
-	}
+        if (waitForPress && Input.GetKey(KeyCode.A))
+        {
+            button.SetActive(false);
+            waitForPress = false;
+            objectToTp.transform.position = teleporterSortie.transform.position+new Vector3(1,0,0);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(passageTir)
+        if(passageJoueur && other.tag == "Player")
+        {
+            if (requireButtonPress)
+            {
+                button.SetActive(true);
+                waitForPress = true;
+                objectToTp = other;
+                return;
+            }
+            other.transform.position = teleporterSortie.transform.position;
+        }
+        
+        if (passageTir)
         {
             if (other.tag == "Projectile")
             {
-                other.transform.position = positionTpSortie;
-                if(!(DirectionSortie.x ==0 && DirectionSortie.y==0))
+                other.transform.position = teleporterSortie.transform.position;
+                if (!(DirectionSortie.x == 0 && DirectionSortie.y == 0))
                 {
                     other.GetComponent<ShotsManager>().m_direction = DirectionSortie;
                 }
             }
         }
 
-        if (passageJoueur)
+        
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.name == "Player")
         {
-            if (other.tag == "Player")
-                other.transform.position = positionTpSortie;
+            button.SetActive(false);
+            waitForPress = false;
         }
     }
 }

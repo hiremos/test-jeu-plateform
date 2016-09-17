@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerWeaponManager : MonoBehaviour
 {

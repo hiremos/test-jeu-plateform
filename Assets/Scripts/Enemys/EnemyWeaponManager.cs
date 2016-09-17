@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets._2D;
 
 public class EnemyWeaponManager : MonoBehaviour {
     
@@ -10,6 +9,7 @@ public class EnemyWeaponManager : MonoBehaviour {
     // 0 : Direction fixe / 0 haut / -1 droite / -2 bas / -3 gauche
     // 1 : Direction sniper
     // 2 : Tete chercheuse
+    // 3 : Lobe Poison
 
     private Transform m_player;
     
@@ -140,10 +140,15 @@ public class EnemyWeaponManager : MonoBehaviour {
 
     public void poisonTir(bool toRight)
     {
+        
         // Création d'un objet copie du prefab
         var shotTransform = Instantiate(shotPrefab) as Transform;
+        if(!toRight)
+        {
+            shotTransform.GetComponent<PoisonManager>().X = -shotTransform.GetComponent<PoisonManager>().X;
+        }
+        shotTransform.GetComponent<PoisonManager>().setDamage(shotDamages);
 
-        // Position
         shotTransform.position = transform.position;
 
         
