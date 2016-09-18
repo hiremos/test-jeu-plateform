@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets._2D;
 
 public class MovePlateform : MonoBehaviour {
 
